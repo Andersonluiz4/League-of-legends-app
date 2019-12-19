@@ -1,0 +1,142 @@
+#login {
+    background-color: #151f34;
+    display: flex;
+    align-items: center;
+    height: 57px;
+    justify-content: space-between;
+}
+
+#naruto {
+    display: flex;
+    align-items: center;
+    height: 90px;
+    justify-content: space-between;
+    background-color: #1c2a45;
+
+}
+
+    #naruto a:hover {
+        background-color: aliceblue;
+    }
+
+.cabecalhoPrincipal-nav-link {
+    color: darkgray;
+
+}
+
+#list {
+    -webkit-margin-collapse: discard;
+    margin-right: 20px;
+}
+
+#new-champ:hover {
+}
+
+#img1, #img2, #img3 {
+    max-height: 100%;
+    max-width: 100%;
+    width: min-content;
+}
+
+#wrapper {
+    width: 1136px;
+    margin: 0 auto;
+    z-index: 150;
+    position: relative;
+    height: 800px;
+    background-color: #151f34;
+}
+
+li:hover {
+     background-color: #071736;
+}
+
+body {
+    background: url("http://www.allwhitebackground.com/images/5/Black-Texture-Background-HD-Image.jpg");
+    height: 1000px;
+    text-align: center;
+    
+    
+}
+h1{
+    color: darkgray;
+    font-style: oblique;
+    font-size: xx-large;
+
+}
+
+.cabecalhoPrincipal-nav {
+    display: contents;
+}
+    .cabecalhoPrincipal-nav li{
+        margin: auto;
+        cursor: pointer;
+    }
+
+.cabecalhoPrincipal-nav:hover {
+    background-color: red;
+}
+
+    .cabecalhoPrincipal-nav a {
+        display: inline-grid;
+        margin: auto ;
+    }
+
+.cabecalhoPrincipal-login {
+    justify-content: space-between;
+    margin-left: auto;
+}
+    .cabecalhoPrincipal-login a {
+        padding: 5px;
+    }
+
+    .cabecalhoPrincipal-nav img {
+        width: 90px;
+        align-self: normal;
+    }
+
+.cabecalhoPrincipal {
+    /* The image used */
+  /* Full height */
+  background-color: #151f34;
+  background-repeat: round;
+}
+
+#free-week {
+    border: 1px solid #1A293A;
+    box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
+    background: #1b2b46;
+    flex: 1;
+    margin: 5px;
+}
+
+#video {
+    border: 1px solid #1A293A;
+    box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
+    background: #1b2b46;
+    flex: 1;
+    padding: 1em;
+    margin: 5px;
+
+}
+
+
+#new-champ  {
+    background-image: url("https://i.imgur.com/yKN9adq.png");
+    height: 300px;
+    background-repeat: round;
+    border: 1px solid #1A293A;
+    box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
+}
+
+    #new-champ a {
+        float: left;
+        padding: 30px;
+        color: darkgoldenrod;
+    }
+
+#first-box {
+    display: flex;
+    height: 200px;;
+}
+
