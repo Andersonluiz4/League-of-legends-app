@@ -23,6 +23,5 @@ export class FunctionsComponent implements OnInit {
   ngOnInit() {
     
     abc.myMethod()
-    abc.imagesChange()
   }
 }
