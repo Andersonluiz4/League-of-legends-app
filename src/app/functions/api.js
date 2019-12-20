@@ -25,7 +25,6 @@ export function myMethod() {
                 IdsImage.push(keys[x].id)
         }
     }   
-        console.log(championInfoList)
         for(var f in IdsImage) {
             var freeWeekUrl = 'http://ddragon.leagueoflegends.com/cdn/9.24.2/img/champion/' + IdsImage[f] + '.png'
             var freeWeekLoadImage = 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + IdsImage[f] + '_0.jpg'
@@ -39,17 +38,16 @@ export function myMethod() {
         var a  = 0;
         var renew = setInterval(function() {
             if(a==loadImages.length) a=0;
-                document.getElementById("img1").src = loadImages[a];
-                document.getElementById("video").src = loadImages[a];
+                document.getElementById("img1").src = loadImages[a]
             if(a+1==loadImages.length) a=-1;
                 document.getElementById("img1").src = loadImages[a++];
             if(a+2==loadImages.length) a=-2;
                 document.getElementById("img1").src = loadImages[a+2];
+
             i+=3;
 
         },500)
         
-    return imageList
 })
 }
 

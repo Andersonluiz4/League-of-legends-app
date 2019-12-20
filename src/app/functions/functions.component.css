@@ -47,7 +47,6 @@
     margin: 0 auto;
     z-index: 150;
     position: relative;
-    height: 800px;
     background-color: #151f34;
 }
 
@@ -57,7 +56,7 @@ li:hover {
 
 body {
     background: url("http://www.allwhitebackground.com/images/5/Black-Texture-Background-HD-Image.jpg");
-    height: 1000px;
+    height: 1500px;
     text-align: center;
     
     
@@ -154,3 +153,15 @@ h1{
     margin: 5px;
     height: 189px;
 }
+
+
+#seconds-box {
+    display: flex;
+    justify-content: space-around;
+    height: 400px;
+}
+    #seconds-box object {
+        width: 50%;
+        margin: 10px;
+
+    }
