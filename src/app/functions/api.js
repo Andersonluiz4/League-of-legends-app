@@ -1,16 +1,17 @@
 let freeWeek;
+let loadImages;
 export function myMethod() {
     window.axios = require('axios');
 
     axios.all([
         window.axios.get('http://ddragon.leagueoflegends.com/cdn/9.3.1/data/en_US/champion.json'),
-        window.axios.get('https://br1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=RGAPI-e5551933-5e01-413f-a912-bc67364e4a90'),
+        window.axios.get('https://br1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=RGAPI-a84beb3a-e548-4667-9bd4-9a40b8ce417f'),
     ])
     .then(function (response) {
         let IdsImage = [];
         let idsList = [];
         let imageList = [];
-        let loadImages = [];
+        loadImages = [];
         let championInfoList = [];
         freeWeek = []
 
@@ -31,41 +32,24 @@ export function myMethod() {
             var imageInfo = {'name': IdsImage[f], 'url': freeWeekUrl}
             var loadImageInfo = {'name': IdsImage[f], 'url': freeWeekLoadImage}
             document.getElementById('list').innerHTML += '<img src="' + freeWeekUrl + '" + height=40px;' +'>'
+            loadImages.push(loadImageInfo)
+        } 
 
-            loadImages.push(loadImageInfo.url)
-        }            
 
-        var a  = 0;
-        var renew = setInterval(function() {
-            if(a==loadImages.length) a=0;
-                document.getElementById("img1").src = loadImages[a]
-            if(a+1==loadImages.length) a=-1;
-                document.getElementById("img1").src = loadImages[a++];
-            if(a+2==loadImages.length) a=-2;
-                document.getElementById("img1").src = loadImages[a+2];
+        function fader(message) {
+            $("#sasuke").fadeOut(100, function() {
+            $(this).html(message).fadeIn(900);
+            
+            });
+        }
+        var thisId=0;
+        window.setInterval(function(){
+            $('#img1').attr('src', loadImages[thisId].url);
+            fader(loadImages[thisId].name);
+            thisId++; //increment data array id
+            if (thisId==loadImages.length) thisId=0;
+        },2000);
 
-            i+=3;
-
-        },500)
-        
-})
+    });
 }
 
-export function imagesChange() {
-    var images = ["https://www.smartplacecoworking.com.br/coworking/imagens/onde-tem-endereco-fiscal-comercio.jpg", "http://placeholdit.imgix.net/~text?txtsize=85&bg=ef4135&txtclr=ffffff&txt=IMG2&w=327&h=420", "http://placeholdit.imgix.net/~text?txtsize=85&bg=ef4135&txtclr=ffffff&txt=IMG3&w=327&h=420",
-                "https://www.smartplacecoworking.com.br/coworking/imagens/onde-tem-endereco-fiscal-comercio.jpg", "http://placeholdit.imgix.net/~text?txtsize=85&bg=ef4135&txtclr=ffffff&txt=IMG5&w=327&h=420","http://placeholdit.imgix.net/~text?txtsize=85&bg=ef4135&txtclr=ffffff&txt=IMG6&w=327&h=420","http://placeholdit.imgix.net/~text?txtsize=85&bg=ef4135&txtclr=ffffff&txt=IMG7&w=327&h=420"
-              ];
-
-  var i = 0;
-  var renew = setInterval(function(){
-        if(i==images.length) i=0;
-          document.getElementById("img1").src = images[i]; 
-        if(i+1==images.length) i=-1;
-            document.getElementById("img1").src = images[i+1];
-        if(i+2==images.length) i=-2;
-            document.getElementById("img1").src = images[i+2];
-        i+=3;
-
-      
-  },1000);
-}
