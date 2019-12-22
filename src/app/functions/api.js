@@ -24,7 +24,8 @@ export function myMethod() {
         for(var x = 0; x < keys.length; x++) {
             if (idsList.includes(parseInt(keys[x].key))) {
                 var freeWeekLoadImage = 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + keys[x].name + '_0.jpg'
-                var championInfo = {'name': keys[x].name, 'title': keys[x].title, 'info': keys[x].info, 'url': freeWeekLoadImage}
+                var skinUrl = 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + keys[x].name + '_1.jpg'
+                var championInfo = {'name': keys[x].name, 'title': keys[x].title, 'info': keys[x].info, 'url': freeWeekLoadImage, 'skinUrl': skinUrl}
                 championInfoList.push(championInfo)
                 IdsImage.push(keys[x].id)
             }
@@ -37,20 +38,15 @@ export function myMethod() {
         var thisId=0;
         window.setInterval(function(){
             $('#img1').attr('src', championInfoList[thisId].url);
-            faderImage(championInfoList[thisId].url);
+            faderImage(championInfoList[thisId].skinUrl);
             faderTitle(championInfoList[thisId].title);
-            faderInfo(JSON.stringify(championInfoList[thisId].info));
             thisId++;
             if (thisId==championInfoList.length) thisId=0;
         },3000 );
 
-
-
-
 function faderImage(message) {
-    $("#img2").fadeOut(100, function() {
-    $(this).attr('src', message).fadeIn(900);
-    
+    $("#sasuke").fadeOut(100, function() {
+    $(this).css("background-image", "linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(" + message + ")").fadeIn(900);    
     });
 }
 function faderTitle(message) {
@@ -60,12 +56,6 @@ function faderTitle(message) {
     });
 }
 
-function faderInfo(message) {
-    $("#info-list").fadeOut(100, function() {
-    $(this).html(message).fadeIn(900);
-    
-    });
-}
     });
 }
 

@@ -33,9 +33,6 @@
     margin-right: 20px;
 }
 
-#new-champ:hover {
-}
-
 #img1, #img2, #img3 {
     max-height: 100%;
     max-width: 100%;
@@ -125,12 +122,9 @@ h1{
     height: fit-content;
 
 }
-
-#free-week-image {
-    width: 150px;
-    height: fit-content;
-    margin: 10px;
+#free-week-info {
     display: flex;
+    width: 200px;
 }
 
 #img2 {
@@ -163,7 +157,12 @@ h1{
     margin: 5px;
     height: 189px;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-repeat: round;
 }
+
 
 
 #seconds-box {
