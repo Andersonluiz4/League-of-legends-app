@@ -126,6 +126,16 @@ h1{
 
 }
 
+#free-week-image {
+    width: 150px;
+    height: fit-content;
+    margin: 10px;
+    display: flex;
+}
+
+#img2 {
+    height: -webkit-fill-available;
+}
 
 #new-champ  {
     background-image: url("https://i.imgur.com/yKN9adq.png");
@@ -152,6 +162,7 @@ h1{
     flex: 1;
     margin: 5px;
     height: 189px;
+    color: white;
 }
 
 
