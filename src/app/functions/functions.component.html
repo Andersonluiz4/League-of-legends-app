@@ -1,6 +1,7 @@
 <html>
   <body>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="api.js"></script>
     <header class="cabecalhoPrincipal">
       <div id="login">
         <nav class="cabecalhoPrincipal-login">
@@ -49,9 +50,18 @@
   </div>
   <div id="seconds-box">
     <div id></div>
-    <object  data="https://www.youtube.com/v/Y-839Y-cLOk"></object>
-    <object  data="https://www.youtube.com/v/zaVYX_pzf0w"></object>
+    <object data="https://www.youtube.com/v/Y-839Y-cLOk"></object>
+    <object data="https://www.youtube.com/v/zaVYX_pzf0w"></object>
   </div>
+  <div id="getMastery">
+    <input id="str" [(ngModel)]="str"/>
+    <button (click)="sendValues()">Send</button>
+    <div id="naruteiro">
+      <a id="wins"></a>
+      <a id="losses"></a>
+    </div>
+  </div>
+  
 </div>
 
 </body>
