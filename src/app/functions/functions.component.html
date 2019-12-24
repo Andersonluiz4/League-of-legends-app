@@ -58,19 +58,25 @@
       <input id="str" [(ngModel)]="str"/>
       <button (click)="sendValues()">Send</button>
     </div>
+    <div id="erroor" style="display: none;">
+      <a id="error"></a>
+    </div>
     <div id="naruteiro">
-      <h1 id="name"></h1>
+      
       <div id="infos">
+        <h1 id="name"></h1>
+      </div>
+      <div id="formInfo">
         <a id="wins"></a>
         <a id="losses"></a>
         <a id="tier"></a>
         <a id="rate"></a>
       </div>
+        <div id="imageElo">
+          <img id="eloImage" src="">
+      </div>
     </div>
     
-    <div id="imageElo">
-      <img id="eloImage" src="">
-    </div>
   </div>
   
 </div>

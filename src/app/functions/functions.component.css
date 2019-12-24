@@ -15,11 +15,19 @@
 
 }
 
+#formInfo {
+    display: grid;
+}
+
+    #form {
+        position: static;
+    }
+
 #naruteiro {
     color: rosybrown;
-    align-items: center;
-    display: contents;
+    width: 100%;
     text-align: justify;
+    justify-content: space-around;
 }
 
     #naruteiro h1 {
@@ -28,9 +36,18 @@
 
 
 #infos {
-    display: grid;
-    margin-top: 30px;
-    margin-left: 50px;
+    align-self: center;
+}
+
+#erroor {
+    width: -webkit-fill-available;
+}
+
+#error {
+    display: flex;
+    width: -webkit-fill-available;
+    margin-left: 40%;
+    align-self: center;
 }
 
 #video img{
@@ -120,12 +137,6 @@ h1{
   background-repeat: round;
 }
 
-#getMastery {
-    display: flex;
-    margin: 5px;
-    justify-content: space-around;
-}
-
 #imageElo img {
     height: -webkit-fill-available;
 }
@@ -138,6 +149,8 @@ input {
     border: 1px solid #1A293A;
     box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
     height: 200px;
+    display: flex;
+    margin: 5px;
 }
 
 #free-week {
