@@ -31,9 +31,14 @@ export class FunctionsComponent implements OnInit {
         .subscribe(data => 
           {
             this.professionals = data;
-            console.log(this.professionals[0].wins)
+            console.log(this.professionals[0])
             document.getElementById('wins').textContent = 'wins: ' + this.professionals[0].wins
             document.getElementById('losses').textContent = 'losses: ' + this.professionals[0].losses
+            document.getElementById('name').textContent = this.professionals[0].summonerName
+            document.getElementById('tier').textContent = 'tier: ' + this.professionals[0].tier + " " + this.professionals[0].rank
+            document.getElementById('eloImage').src = "https://i.pinimg.com/originals/d7/47/1e/d7471e2ef48175986e9b75b566f61408.png"
+            var totalValue = this.professionals[0].wins + this.professionals[0].losses
+            document.getElementById('rate').textContent = String((this.professionals[0].wins/totalValue)*100)
           });
     
   }  

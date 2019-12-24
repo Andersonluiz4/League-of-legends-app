@@ -54,11 +54,22 @@
     <object data="https://www.youtube.com/v/zaVYX_pzf0w"></object>
   </div>
   <div id="getMastery">
-    <input id="str" [(ngModel)]="str"/>
-    <button (click)="sendValues()">Send</button>
+    <div id="form">
+      <input id="str" [(ngModel)]="str"/>
+      <button (click)="sendValues()">Send</button>
+    </div>
     <div id="naruteiro">
-      <a id="wins"></a>
-      <a id="losses"></a>
+      <h1 id="name"></h1>
+      <div id="infos">
+        <a id="wins"></a>
+        <a id="losses"></a>
+        <a id="tier"></a>
+        <a id="rate"></a>
+      </div>
+    </div>
+    
+    <div id="imageElo">
+      <img id="eloImage" src="">
     </div>
   </div>
   
