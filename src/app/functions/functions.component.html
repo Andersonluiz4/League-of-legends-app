@@ -56,13 +56,21 @@
   <div id="getMastery">
     <div id="form">
       <input id="str" [(ngModel)]="str"/>
-      <button (click)="sendValues()">Send</button>
+      <label class="container">Solo Queue
+        <input type="checkbox" [(ngModel)]="soloChecked"  data-md-icheck (change)="toggleVisibility($event)"/>
+        <span class="checkmark"></span>
+      </label>
+      <label class="container">Flex
+        <input type="checkbox" [(ngModel)]="flexChecked"  data-md-icheck (change)="toggleVisibility($event)"/>
+        <span class="checkmark"></span>
+      </label>
+      <button (click)="sendValues() ">Send</button>
     </div>
     <div id="erroor" style="display: none;">
       <a id="error"></a>
     </div>
+    <div class="lds-roller" id="loader" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     <div id="naruteiro">
-      
       <div id="infos">
         <h1 id="name"></h1>
       </div>
@@ -76,6 +84,7 @@
           <img id="eloImage" src="">
       </div>
     </div>
+    
     
   </div>
   
