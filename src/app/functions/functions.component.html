@@ -56,15 +56,7 @@
   <div id="getMastery">
     <div id="form">
       <input id="str" [(ngModel)]="str"/>
-      <label class="container">Solo Queue
-        <input type="checkbox" [(ngModel)]="soloChecked"  data-md-icheck (change)="toggleVisibility($event)"/>
-        <span class="checkmark"></span>
-      </label>
-      <label class="container">Flex
-        <input type="checkbox" [(ngModel)]="flexChecked"  data-md-icheck (change)="toggleVisibility($event)"/>
-        <span class="checkmark"></span>
-      </label>
-      <button (click)="sendValues() ">Send</button>
+      <button (click)="sendValues($event)">Send</button>
     </div>
     <div id="erroor">
       <div class="lds-roller" id="loader2" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
@@ -75,6 +67,10 @@
     <div id="naruteiro">
       <div class="lds-roller" id="loader" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       <div id="summonerInfo">
+        <SELECT id="queuePicker" (change)="sendValues($event)" style="display: none;">
+          <option value="RANKED_SOLO_5x5">Solo</option>
+          <option value="RANKED_FLEX_SR">Flex</option>
+        </SELECT>
         <div id="infos">
           <h1 id="name"></h1>
         </div>

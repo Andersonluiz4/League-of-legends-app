@@ -5,7 +5,7 @@ export function myMethod() {
 
     axios.all([
         window.axios.get('http://ddragon.leagueoflegends.com/cdn/9.3.1/data/en_US/champion.json'),
-        window.axios.get('https://br1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=RGAPI-cf6c2acf-6c9c-4255-a5fa-c2e305b47882'),
+        window.axios.get('https://br1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=RGAPI-e56670f7-f26a-49f6-8037-ab882cb636bc'),
     ])
     .then(function (response) {
         let IdsImage = [];

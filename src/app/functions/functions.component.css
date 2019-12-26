@@ -36,6 +36,7 @@
 
 #formInfo {
     display: grid;
+    color: darkgray;
 }
 
     #form {
@@ -63,7 +64,13 @@
 
 #infos {
     align-self: center;
+    color: darkgray;
+    
 }
+
+    #infos h1 {
+        font-style: initial;
+    }
 
 #erroor {
     width: 100%;
