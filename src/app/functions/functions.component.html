@@ -55,7 +55,7 @@
   </div>
   <div id="getMastery">
     <div id="form">
-      <input id="str" [(ngModel)]="str"/>
+      <input id="str" [(ngModel)]="str" placeholder="Username..."/>
       <button (click)="sendValues($event)">Send</button>
     </div>
     <div id="erroor">
@@ -68,8 +68,8 @@
       <div class="lds-roller" id="loader" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       <div id="summonerInfo">
         <SELECT id="queuePicker" (change)="sendValues($event)" style="display: none;">
-          <option value="RANKED_SOLO_5x5">Solo</option>
-          <option value="RANKED_FLEX_SR">Flex</option>
+          <option id="RANKED_SOLO_5x5" value="RANKED_SOLO_5x5">Solo</option>
+          <option id="RANKED_FLEX_SR" value="RANKED_FLEX_SR">Flex</option>
         </SELECT>
         <div id="infos">
           <h1 id="name"></h1>

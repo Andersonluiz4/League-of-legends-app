@@ -41,27 +41,42 @@ export class FunctionsComponent implements OnInit {
           })
 }
 
-
   sendValues(e){
     this.marked= e.target.value;
     this.http
-        .get<any[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.str + '?api_key=RGAPI-e56670f7-f26a-49f6-8037-ab882cb636bc')
+        .get<Object[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.str + '?api_key=RGAPI-e56670f7-f26a-49f6-8037-ab882cb636bc')
         .subscribe(user  => 
           {
             this.http
-        .get<any>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + user.id + '?api_key=RGAPI-e56670f7-f26a-49f6-8037-ab882cb636bc')
+        .get<Object>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + user.id + '?api_key=RGAPI-e56670f7-f26a-49f6-8037-ab882cb636bc')
         .subscribe(data => {
           this.loader("#loader", "#summonerInfo")
             this.professionals = data;
-            
             var a = 0;
-            if(this.professionals[0] && this.professionals[0].queueType == this.marked) {
+            var fila;
+            if(this.professionals[0] && !this.marked) {
               a = 0;
-              console.log("dsa")
+              if(!fila) {
+                document.getElementById("RANKED_SOLO_5x5").style.display = 'flex'
+                document.getElementById("RANKED_FLEX_SR").style.display = 'flex'
+              }
             }
+            if (this.professionals[0] && !this.professionals[1]) {
+              a = 0;
+                $("#queuePicker").prop("selectedIndex", 0)
+                if (this.professionals[0].queueType == this.marked) {
+                  document.getElementById("RANKED_SOLO_5x5").style.display = 'none'
+                  fila = "RANKED_SOLO_5x5"
+
+                }
+                else {
+                  document.getElementById("RANKED_FLEX_SR").style.display = 'none'
+                  fila = "RANKED_FLEX_SR"
+              }
+            }
+            
             if(this.professionals[1] && this.professionals[1].queueType == this.marked) {
               a = 1;
-              console.log("duhs")
             }
             if(this.professionals[0]) {
               document.getElementById('naruteiro').style.display = 'flex'
@@ -74,7 +89,7 @@ export class FunctionsComponent implements OnInit {
               document.getElementById('name').textContent = this.professionals[a].summonerName
               document.getElementById('tier').textContent = 'Tier: ' + this.professionals[a].tier + " " + this.professionals[0].rank
               document.getElementById('eloImage').setAttribute("src", this.getEloImage(this.professionals[a].tier))
-              var totalValue = this.professionals[0].wins + this.professionals[a].losses
+              var totalValue = this.professionals[a].wins + this.professionals[a].losses
               document.getElementById('rate').textContent = 'Win Rate: ' + String(Math.round((this.professionals[a].wins/totalValue) * 100) + '%')
 
             }
@@ -101,6 +116,7 @@ export class FunctionsComponent implements OnInit {
     }, 500);
     setTimeout(function(id) {
       $(inId).fadeIn('fast');
+      
     }, 1000);
   }
 
