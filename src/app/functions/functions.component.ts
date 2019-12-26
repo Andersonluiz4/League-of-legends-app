@@ -57,7 +57,30 @@ export class FunctionsComponent implements OnInit {
         .subscribe(data => {
           this.loader("#loader", "#summonerInfo")
             this.professionals = data;
-            if(this.professionals[1]) {
+            var url;
+            console.log( this.professionals)
+            if (this.professionals[0].tier == 'WOOD') {
+              url = "https://i.pinimg.com/originals/d7/58/1b/d7581b2a1033309523d20c9d1a1f4589.png";
+            }
+            else if (this.professionals[0].tier == 'BRONZE') {
+              url = "https://i.pinimg.com/originals/4f/9e/6c/4f9e6c72c9744e912dbf6c19b13101f9.png";
+            }
+            else if (this.professionals[0].tier == 'SILVER') {
+              url = "https://i.pinimg.com/originals/75/61/5a/75615a37309f44c6f07353277429a4f2.png";
+            }
+            else if (this.professionals[0].tier == 'GOLD') {
+              url = "https://i.pinimg.com/originals/d7/58/1b/d7581b2a1033309523d20c9d1a1f4589.png";
+            }
+            else if (this.professionals[0].tier == 'PLATINUM') {
+              url = "https://i.pinimg.com/originals/d7/47/1e/d7471e2ef48175986e9b75b566f61408.png";
+            }
+            else if (this.professionals[0].tier == 'DIAMOND') {
+              url = "https://i.pinimg.com/originals/6a/10/c7/6a10c7e84c9f4e4aa9412582d28f3fd2.png";
+            }
+            else {
+              url = ''
+            }
+            if(this.professionals[0]) {
               document.getElementById('naruteiro').style.display = 'flex'
               document.getElementById('summonerInfo').style.display = 'none'
               document.getElementById('loader').style.display = 'flex'
@@ -66,7 +89,7 @@ export class FunctionsComponent implements OnInit {
               document.getElementById('losses').textContent = 'losses: ' + this.professionals[0].losses
               document.getElementById('name').textContent = this.professionals[0].summonerName
               document.getElementById('tier').textContent = 'tier: ' + this.professionals[0].tier + " " + this.professionals[0].rank
-              document.getElementById('eloImage').setAttribute("src", "https://i.pinimg.com/originals/d7/47/1e/d7471e2ef48175986e9b75b566f61408.png")
+              document.getElementById('eloImage').setAttribute("src", url)
               var totalValue = this.professionals[0].wins + this.professionals[0].losses
               document.getElementById('rate').textContent = String((this.professionals[0].wins/totalValue)*100)
             }
