@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as abc from '../functions/api'
-import * as CryptoJS from 'crypto-js';
 
 
 import {HttpClient} from '@angular/common/http'
-import { PathLocationStrategy } from '@angular/common';
-
+import * as $ from 'jquery';
 
 
 
@@ -21,6 +19,8 @@ export class FunctionsComponent implements OnInit {
   marked = false;
   theCheckbox = false;
 
+  championsList: any = [];
+
   str: string;
   
     constructor(private http:HttpClient) {
@@ -31,18 +31,35 @@ export class FunctionsComponent implements OnInit {
       this.marked= e.target.checked;
     }
   
-  
+  getChampionsList() {
+    this.http
+        .get<Object[]>('http://ddragon.leagueoflegends.com/cdn/9.3.1/data/en_US/champion.json')
+        .subscribe(user => 
+          {
+          this.http
+        .get<Object[]>('https://br1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner' + user.id + '?api_key=RGAPI-cf6c2acf-6c9c-4255-a5fa-c2e305b47882')
+        .subscribe(user => {
+          this.championsList = user
+  })
+          })
+}
+
+  getId() {
+
+  }
   sendValues(){
     this.http
         .get<Object[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.str + '?api_key=RGAPI-cf6c2acf-6c9c-4255-a5fa-c2e305b47882')
         .subscribe(user => 
           {
             this.http
-        .get<any>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + user.id + '?api_key=RGAPI-cf6c2acf-6c9c-4255-a5fa-c2e305b47882')
+        .get<Object>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + user.id + '?api_key=RGAPI-cf6c2acf-6c9c-4255-a5fa-c2e305b47882')
         .subscribe(data => {
+          this.loader("#loader", "#summonerInfo")
             this.professionals = data;
             if(this.professionals[1]) {
               document.getElementById('naruteiro').style.display = 'flex'
+              document.getElementById('summonerInfo').style.display = 'none'
               document.getElementById('loader').style.display = 'flex'
               document.getElementById('erroor').style.display = 'none'
               document.getElementById('wins').textContent = 'wins: ' + this.professionals[0].wins
@@ -53,9 +70,14 @@ export class FunctionsComponent implements OnInit {
               var totalValue = this.professionals[0].wins + this.professionals[0].losses
               document.getElementById('rate').textContent = String((this.professionals[0].wins/totalValue)*100)
             }
+            
             else {
-              document.getElementById('naruteiro').style.display = 'none'
               document.getElementById('erroor').style.display = 'flex'
+              document.getElementById('sakura').style.display = 'none'
+              document.getElementById('loader2').style.display = 'flex'
+              this.loader("#loader2", "#sakura")
+              document.getElementById('naruteiro').style.display = 'none'
+              
               document.getElementById('error').textContent = "Nothing to display"
 
             }
@@ -63,7 +85,17 @@ export class FunctionsComponent implements OnInit {
             })
           });
     
-  }  
+  }
+
+  loader(outId, inId) {
+    setTimeout(function() {
+      $(outId).fadeOut('fast');
+    }, 500);
+    setTimeout(function(id) {
+      $(inId).fadeIn('fast');
+    }, 1000);
+  }
+ 
 
 
   ngOnInit() {

@@ -66,23 +66,29 @@
       </label>
       <button (click)="sendValues() ">Send</button>
     </div>
-    <div id="erroor" style="display: none;">
-      <a id="error"></a>
+    <div id="erroor">
+      <div class="lds-roller" id="loader2" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div id="sakura">
+        <a id="error"></a>
+      </div>
     </div>
-    <div class="lds-roller" id="loader" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     <div id="naruteiro">
-      <div id="infos">
-        <h1 id="name"></h1>
+      <div class="lds-roller" id="loader" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div id="summonerInfo">
+        <div id="infos">
+          <h1 id="name"></h1>
+        </div>
+        <div id="formInfo">
+          <a id="wins"></a>
+          <a id="losses"></a>
+          <a id="tier"></a>
+          <a id="rate"></a>
+        </div>
+          <div id="imageElo">
+            <img id="eloImage" src="">
+        </div>
       </div>
-      <div id="formInfo">
-        <a id="wins"></a>
-        <a id="losses"></a>
-        <a id="tier"></a>
-        <a id="rate"></a>
-      </div>
-        <div id="imageElo">
-          <img id="eloImage" src="">
-      </div>
+      
     </div>
     
     

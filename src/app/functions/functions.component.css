@@ -15,6 +15,10 @@
 
 }
 
+#summonerInfo {
+    display: contents;
+}
+
 .container {
     display: block;
     position: relative;
@@ -62,14 +66,14 @@
 }
 
 #erroor {
-    width: -webkit-fill-available;
+    width: 100%;
+    justify-content: space-around;
 }
 
 #error {
-    display: flex;
-    width: -webkit-fill-available;
     margin-left: 40%;
     align-self: center;
+    
 }
 
 #video img{
@@ -236,6 +240,12 @@ input {
     background-repeat: round;
 }
 
+#sakura {
+    width: -webkit-fill-available;
+    text-align: initial;
+    display: flex;
+}
+
 #seconds-box {
     display: flex;
     justify-content: space-around;
@@ -252,6 +262,7 @@ input {
         position: relative;
         width: 80px;
         height: 80px;
+        align-self: center;
       }
       .lds-roller div {
         animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;

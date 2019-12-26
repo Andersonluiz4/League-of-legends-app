@@ -1,5 +1,3 @@
-import { stringify } from 'querystring';
-
 let freeWeek;
 let loadImages;
 export function myMethod() {
@@ -12,7 +10,6 @@ export function myMethod() {
     .then(function (response) {
         let IdsImage = [];
         let idsList = [];
-        let imageList = [];
         loadImages = [];
         let championInfoList = [];
         freeWeek = []
@@ -20,7 +17,7 @@ export function myMethod() {
         const keys = Object.values(response[0].data.data)
         for (var i in response[1].data.freeChampionIds)
             idsList.push(response[1].data.freeChampionIds[i])
-
+        
         for(var x = 0; x < keys.length; x++) {
             if (idsList.includes(parseInt(keys[x].key))) {
                 var freeWeekLoadImage = 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + keys[x].name + '_0.jpg'
@@ -29,7 +26,8 @@ export function myMethod() {
                 championInfoList.push(championInfo)
                 IdsImage.push(keys[x].id)
             }
-        }   
+        
+        }
         for(var f in IdsImage) {
             var freeWeekUrl = 'http://ddragon.leagueoflegends.com/cdn/9.24.2/img/champion/' + IdsImage[f] + '.png'
             document.getElementById('list').innerHTML += '<img src="' + freeWeekUrl + '" + height=40px;' +'>'
@@ -55,8 +53,5 @@ export function myMethod() {
             
             });
         }
-
-        
     });
 }
-
