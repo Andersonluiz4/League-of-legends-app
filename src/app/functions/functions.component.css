@@ -34,12 +34,12 @@
 
 }
 
-#sakura {
+#error-message {
     background-repeat: round;
     background-image: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("https://pm1.narvii.com/5824/97c9ecbc30bcda7643b3b0edf97b545b66fca9c1_hq.jpg")
 }
 
-    #sakura a {
+    #error-message a {
         color: darkgray;
     }
 
@@ -58,20 +58,21 @@
 
         #form button {
            margin-right: 10px;
+           background-color: lavender;
         }
 
 
 #queuePicker {
     height: 30px;
 }
-#naruteiro {
+#info-content {
     color: rosybrown;
     width: 100%;
     text-align: justify;
     justify-content: space-around;
 }
 
-    #naruteiro h1 {
+    #info-content h1 {
         align-self: center;
     }
 
@@ -111,7 +112,7 @@ footer img {
         font-style: initial;
     }
 
-#erroor {
+#error-content {
     width: 100%;
     justify-content: space-around;
 }
@@ -219,6 +220,7 @@ h1{
 
 input {
     margin: 10px;
+    background-color: lavender;
 }
 
 #getMastery {
@@ -290,7 +292,7 @@ input {
     background-repeat: round;
 }
 
-#sakura {
+#error-message {
     width: -webkit-fill-available;
     text-align: initial;
     display: flex;

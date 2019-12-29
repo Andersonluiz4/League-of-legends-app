@@ -15,7 +15,7 @@ import * as $ from 'jquery';
 })
 
 export class FunctionsComponent implements OnInit {
-  professionals: any = {};
+  summonerRank: any = {};
   marked = false;
   theCheckbox = false;
   soloChecked: Boolean;
@@ -23,48 +23,36 @@ export class FunctionsComponent implements OnInit {
 
   championsList: any = [];
 
-  str: string;
+  summonerName: string;
   
     constructor(private http:HttpClient) {
         
     }
-  getChampionsList() {
-    this.http
-        .get<Object[]>('http://ddragon.leagueoflegends.com/cdn/9.3.1/data/en_US/champion.json')
-        .subscribe(user => 
-          {
-          this.http
-        .get<any[]>('https://br1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner' + user.id + '?api_key=RGAPI-cf6c2acf-6c9c-4255-a5fa-c2e305b47882')
-        .subscribe(user => {
-          this.championsList = user
-  })
-          })
-}
 
   sendValues(e){
     this.marked= e.target.value;
     this.http
-        .get<any[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.str + '?api_key=RGAPI-290c0b72-77e1-425d-a75f-13cd19095846')
-        .subscribe(user  => 
+        .get<any[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=RGAPI-290c0b72-77e1-425d-a75f-13cd19095846')
+        .subscribe(userId  => 
           {
             this.http
-        .get<any>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + user.id + '?api_key=RGAPI-290c0b72-77e1-425d-a75f-13cd19095846')
-        .subscribe(data => {
+        .get<any>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + userId.id + '?api_key=RGAPI-290c0b72-77e1-425d-a75f-13cd19095846')
+        .subscribe(masteryInfo => {
           this.loader("#loader", "#summonerInfo")
-            this.professionals = data;
+            this.summonerRank = masteryInfo;
             var a = 0;
             var fila;
-            if(this.professionals[0] && !this.marked) {
+            if(this.summonerRank[0] && !this.marked) {
               a = 0;
               if(!fila) {
                 document.getElementById("RANKED_SOLO_5x5").style.display = 'flex'
                 document.getElementById("RANKED_FLEX_SR").style.display = 'flex'
               }
             }
-            if (this.professionals[0] && !this.professionals[1]) {
+            if (this.summonerRank[0] && !this.summonerRank[1]) {
               a = 0;
                 $("#queuePicker").prop("selectedIndex", 0)
-                if (this.professionals[0].queueType == this.marked) {
+                if (this.summonerRank[0].queueType == this.marked) {
                   document.getElementById("RANKED_SOLO_5x5").style.display = 'none'
                   fila = "RANKED_SOLO_5x5"
 
@@ -75,31 +63,31 @@ export class FunctionsComponent implements OnInit {
               }
             }
             
-            if(this.professionals[1] && this.professionals[1].queueType == this.marked) {
+            if(this.summonerRank[1] && this.summonerRank[1].queueType == this.marked) {
               a = 1;
             }
-            if(this.professionals[0]) {
-              document.getElementById('naruteiro').style.display = 'flex'
+            if(this.summonerRank[0]) {
+              document.getElementById('info-content').style.display = 'flex'
               document.getElementById('queuePicker').style.display = 'flex'
               document.getElementById('summonerInfo').style.display = 'none'
               document.getElementById('loader').style.display = 'flex'
-              document.getElementById('erroor').style.display = 'none'
-              document.getElementById('wins').textContent = 'Wins: ' + this.professionals[a].wins
-              document.getElementById('losses').textContent = 'Losses: ' + this.professionals[a].losses
-              document.getElementById('name').textContent = this.professionals[a].summonerName
-              document.getElementById('tier').textContent = 'Tier: ' + this.professionals[a].tier + " " + this.professionals[0].rank
-              document.getElementById('eloImage').setAttribute("src", this.getEloImage(this.professionals[a].tier))
-              var totalValue = this.professionals[a].wins + this.professionals[a].losses
-              document.getElementById('rate').textContent = 'Win Rate: ' + String(Math.round((this.professionals[a].wins/totalValue) * 100) + '%')
+              document.getElementById('error-content').style.display = 'none'
+              document.getElementById('wins').textContent = 'Wins: ' + this.summonerRank[a].wins
+              document.getElementById('losses').textContent = 'Losses: ' + this.summonerRank[a].losses
+              document.getElementById('name').textContent = this.summonerRank[a].summonerName
+              document.getElementById('tier').textContent = 'Tier: ' + this.summonerRank[a].tier + " " + this.summonerRank[0].rank
+              document.getElementById('eloImage').setAttribute("src", this.getEloImage(this.summonerRank[a].tier))
+              var totalValue = this.summonerRank[a].wins + this.summonerRank[a].losses
+              document.getElementById('rate').textContent = 'Win Rate: ' + String(Math.round((this.summonerRank[a].wins/totalValue) * 100) + '%')
 
             }
             
             else {
-              document.getElementById('erroor').style.display = 'flex'
-              document.getElementById('sakura').style.display = 'none'
+              document.getElementById('error-content').style.display = 'flex'
+              document.getElementById('error-message').style.display = 'none'
               document.getElementById('loader2').style.display = 'flex'
-              this.loader("#loader2", "#sakura")
-              document.getElementById('naruteiro').style.display = 'none'
+              this.loader("#loader2", "#error-message")
+              document.getElementById('info-content').style.display = 'none'
               
               document.getElementById('error').textContent = "Nothing to display"
 

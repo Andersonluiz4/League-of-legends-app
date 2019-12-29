@@ -50,16 +50,16 @@
   </div>
   <div id="getMastery">
     <div id="form">
-      <input id="str" [(ngModel)]="str" placeholder="Summoner name..."/>
+      <input id="summonerName" [(ngModel)]="summonerName" placeholder="Summoner name..."/>
       <button (click)="sendValues($event)">Search</button>
     </div>
-    <div id="erroor">
+    <div id="error-content">
       <div class="lds-roller" id="loader2" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-      <div id="sakura">
+      <div id="error-message">
         <a id="error"></a>
       </div>
     </div>
-    <div id="naruteiro">
+    <div id="info-content">
       <div class="lds-roller" id="loader" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       <div id="summonerInfo">
         <SELECT id="queuePicker" (change)="sendValues($event)" style="display: none;">
