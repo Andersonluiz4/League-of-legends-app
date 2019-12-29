@@ -44,11 +44,11 @@ export class FunctionsComponent implements OnInit {
   sendValues(e){
     this.marked= e.target.value;
     this.http
-        .get<Object[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.str + '?api_key=RGAPI-e56670f7-f26a-49f6-8037-ab882cb636bc')
+        .get<any[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.str + '?api_key=RGAPI-290c0b72-77e1-425d-a75f-13cd19095846')
         .subscribe(user  => 
           {
             this.http
-        .get<Object>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + user.id + '?api_key=RGAPI-e56670f7-f26a-49f6-8037-ab882cb636bc')
+        .get<any>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + user.id + '?api_key=RGAPI-290c0b72-77e1-425d-a75f-13cd19095846')
         .subscribe(data => {
           this.loader("#loader", "#summonerInfo")
             this.professionals = data;

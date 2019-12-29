@@ -6,12 +6,12 @@
     justify-content: space-between;
 }
 
-#naruto {
+#cabecalhoPrincipal {
     display: flex;
     align-items: center;
     height: 90px;
     justify-content: space-between;
-    background-color: #1c2a45;
+    background-color: #19202d;
 
 }
 
@@ -51,6 +51,7 @@
     #form {
         position: static;
         background-repeat: round;
+        margin: 1px;
         border: 1px solid #1A293A;
         box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420
     }
@@ -74,6 +75,31 @@
         align-self: center;
     }
 
+footer {
+    background-color: #19202d;
+}
+
+footer img {
+    height: 80px;
+    widows: 30px;
+    margin-top: 10px;
+}
+
+
+#medial-links {
+    margin-left: 42.5%;
+    padding: 50p;
+    display: flex;
+    width: 100px;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#medial-links  a {
+    color: red;
+}
+
+
 
 #infos {
     align-self: center;
@@ -96,11 +122,11 @@
     
 }
 
-#video img{
+#champion-image img{
     width: -webkit-fill-available;
 }
 
-    #naruto a:hover {
+    #cabecalhoPrincipal a:hover {
         background-color: aliceblue;
     }
 
@@ -109,12 +135,17 @@
 
 }
 
+#riot-image {
+    justify-content: space-around;
+    display: flex;
+}
+
 #list {
     -webkit-margin-collapse: discard;
     margin-right: 20px;
 }
 
-#img1, #img2, #img3 {
+#variable-image {
     max-height: 100%;
     max-width: 100%;
     width: min-content;
@@ -134,7 +165,6 @@ li:hover {
 
 body {
     background: url("http://www.allwhitebackground.com/images/5/Black-Texture-Background-HD-Image.jpg");
-    height: 1500px;
     text-align: center;
     
     
@@ -192,14 +222,14 @@ input {
 }
 
 #getMastery {
-    border: 1px solid #1A293A;
-    box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
+    border: 5px solid #1A293A;
+    box-shadow: 0 0 6px 1px #060B14, inset 0 0 0 1px #0d1420;
     height: 200px;
     display: flex;
     margin: 5px;
 }
 
-#free-week {
+#free-week-champions {
     border: 1px solid #1A293A;
     box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
     background: #1b2b46;
@@ -208,7 +238,7 @@ input {
     height: fit-content;
 }
 
-#video {
+#champion-image {
     border: 1px solid #1A293A;
     box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
     background: #1b2b46;
@@ -246,7 +276,7 @@ input {
     display: flex;
 }
 
-#sasuke {
+#champion-skin {
     border: 1px solid #1A293A;
     box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
     background: #1b2b46;
@@ -270,6 +300,8 @@ input {
     display: flex;
     justify-content: space-around;
     height: 400px;
+    border: 1px solid #1A293A;
+    box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420
 }
     #seconds-box object {
         width: 50%;

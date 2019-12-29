@@ -5,7 +5,7 @@ export function myMethod() {
 
     axios.all([
         window.axios.get('http://ddragon.leagueoflegends.com/cdn/9.3.1/data/en_US/champion.json'),
-        window.axios.get('https://br1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=RGAPI-e56670f7-f26a-49f6-8037-ab882cb636bc'),
+        window.axios.get('https://br1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=RGAPI-290c0b72-77e1-425d-a75f-13cd19095846'),
     ])
     .then(function (response) {
         let IdsImage = [];
@@ -35,7 +35,7 @@ export function myMethod() {
 
         var thisId=0;
         window.setInterval(function(){
-            $('#img1').attr('src', championInfoList[thisId].url);
+            $('#variable-image').attr('src', championInfoList[thisId].url);
             faderImage(championInfoList[thisId].skinUrl);
             faderTitle(championInfoList[thisId].title);
             thisId++;
@@ -43,7 +43,7 @@ export function myMethod() {
         },3000 );
 
         function faderImage(message) {
-            $("#sasuke").fadeOut(100, function() {
+            $("#champion-skin").fadeOut(100, function() {
             $(this).css("background-image", "linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(" + message + ")").fadeIn(900);    
             });
         }
