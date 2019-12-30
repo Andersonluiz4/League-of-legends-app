@@ -1,11 +1,12 @@
 let freeWeek;
 let loadImages;
+var apiKey = "RGAPI-7e53143e-46ee-48f7-b6af-0ffcf7dca328"
 export function myMethod() {
     window.axios = require('axios');
 
     axios.all([
         window.axios.get('http://ddragon.leagueoflegends.com/cdn/9.3.1/data/en_US/champion.json'),
-        window.axios.get('https://br1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=RGAPI-290c0b72-77e1-425d-a75f-13cd19095846'),
+        window.axios.get('https://br1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=' + apiKey)
     ])
     .then(function (response) {
         let IdsImage = [];
@@ -19,18 +20,19 @@ export function myMethod() {
             idsList.push(response[1].data.freeChampionIds[i])
         
         for(var x = 0; x < keys.length; x++) {
+            var skin = Math.floor(Math.random() * 8 + 1)
             if (idsList.includes(parseInt(keys[x].key))) {
-                var freeWeekLoadImage = 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + keys[x].name + '_0.jpg'
-                var skinUrl = 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + keys[x].name + '_1.jpg'
-                var championInfo = {'name': keys[x].name, 'title': keys[x].title, 'info': keys[x].info, 'url': freeWeekLoadImage, 'skinUrl': skinUrl}
+                var freeWeekLoadImage = '/assets/championImages/splash-images/' + keys[x].name + '_0.jpg'
+                var skinPath = '/assets/championImages/splash-images/' + keys[x].name + '_' + skin + '.jpg'
+                var championInfo = {'name': keys[x].name, 'title': keys[x].title, 'info': keys[x].info, 'url': freeWeekLoadImage, 'skinUrl': skinPath}
                 championInfoList.push(championInfo)
                 IdsImage.push(keys[x].id)
             }
         
         }
         for(var f in IdsImage) {
-            var freeWeekUrl = 'http://ddragon.leagueoflegends.com/cdn/9.24.2/img/champion/' + IdsImage[f] + '.png'
-            document.getElementById('list').innerHTML += '<img src="' + freeWeekUrl + '" + height=40px;' +'>'
+            var freeWeekPath = '/assets/championImages/small-images/' + IdsImage[f] + '.png'
+            document.getElementById('list').innerHTML += '<img src="' + freeWeekPath + '" + height=40px;' +'>'
         }
 
         var thisId=0;
@@ -43,15 +45,54 @@ export function myMethod() {
         },3000 );
 
         function faderImage(message) {
-            $("#champion-skin").fadeOut(100, function() {
-            $(this).css("background-image", "linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(" + message + ")").fadeIn(900);    
+            $("#champion-skin").fadeOut(20, function() {
+            $(this).css("background-image", "linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(" + message + ")").fadeIn(700);    
             });
         }
         function faderTitle(message) {
-            $("#champ-title").fadeOut(100, function() {
-            $(this).html(message).fadeIn(900);
+            $("#champ-title").fadeOut(20, function() {
+            $(this).html(message).fadeIn(700);
             
             });
         }
     });
 }
+
+export function onload(loader) {
+    document.getElementById('loader3').style.display = 'inline-block'
+    $('#container').css("background-image", "url(/assets/Blac-texture.jpg)"
+    );
+  }
+
+export function getEloImage(tier) {
+    if (tier == 'WOOD') {
+      return  "/assets/eloImages/Emblem_Iron.png";
+    }
+    else if (tier == 'BRONZE') {
+      return "/assets/eloImages/Emblem_Bronze.png";
+    }
+    else if (tier == 'SILVER') {
+      return "/assets/eloImages/Emblem_Silverd.png";
+    }
+    else if (tier == 'GOLD') {
+      return "/assets/eloImages/Emblem_Gold.png";
+    }
+    else if (tier == 'PLATINUM') {
+      return "/assets/eloImages/Emblem_Platinum.png";
+    }
+    else if (tier == 'DIAMOND') {
+      return "/assets/eloImages/Emblem_Diamond.png";
+    }
+    else if (tier == 'MASTER') {
+        return "/assets/eloImages/Emblem_Master.png";
+    }
+    else if (tier == 'GRANDMASTER') {
+        return "/assets/eloImages/Emblem_Master.png";
+    }
+    else if (tier == 'CHALLENGER') {
+        return "/assets/eloImages/Emblem_Challenger.png";
+      }
+    else {
+      return ''
+    }
+  }

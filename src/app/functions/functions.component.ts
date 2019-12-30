@@ -20,6 +20,7 @@ export class FunctionsComponent implements OnInit {
   theCheckbox = false;
   soloChecked: Boolean;
   flexChecked: Boolean;
+  apiKey = 'RGAPI-7e53143e-46ee-48f7-b6af-0ffcf7dca328'
 
   championsList: any = [];
 
@@ -32,13 +33,13 @@ export class FunctionsComponent implements OnInit {
   sendValues(e){
     this.marked= e.target.value;
     this.http
-        .get<any[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=RGAPI-290c0b72-77e1-425d-a75f-13cd19095846')
+        .get<Object[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=' + this.apiKey)
         .subscribe(userId  => 
           {
             this.http
-        .get<any>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + userId.id + '?api_key=RGAPI-290c0b72-77e1-425d-a75f-13cd19095846')
+        .get<Object>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + userId.id + '?api_key=' + this.apiKey)
         .subscribe(masteryInfo => {
-          this.loader("#loader", "#summonerInfo")
+          this.loader("#loader", "#summonerInfo", 200, 1000)
             this.summonerRank = masteryInfo;
             var a = 0;
             var fila;
@@ -76,7 +77,7 @@ export class FunctionsComponent implements OnInit {
               document.getElementById('losses').textContent = 'Losses: ' + this.summonerRank[a].losses
               document.getElementById('name').textContent = this.summonerRank[a].summonerName
               document.getElementById('tier').textContent = 'Tier: ' + this.summonerRank[a].tier + " " + this.summonerRank[0].rank
-              document.getElementById('eloImage').setAttribute("src", this.getEloImage(this.summonerRank[a].tier))
+              document.getElementById('eloImage').setAttribute("src", abc.getEloImage(this.summonerRank[a].tier))
               var totalValue = this.summonerRank[a].wins + this.summonerRank[a].losses
               document.getElementById('rate').textContent = 'Win Rate: ' + String(Math.round((this.summonerRank[a].wins/totalValue) * 100) + '%')
 
@@ -86,7 +87,7 @@ export class FunctionsComponent implements OnInit {
               document.getElementById('error-content').style.display = 'flex'
               document.getElementById('error-message').style.display = 'none'
               document.getElementById('loader2').style.display = 'flex'
-              this.loader("#loader2", "#error-message")
+              this.loader("#loader2", "#error-message", 500, 1000)
               document.getElementById('info-content').style.display = 'none'
               
               document.getElementById('error').textContent = "Nothing to display"
@@ -98,45 +99,19 @@ export class FunctionsComponent implements OnInit {
     
   }
 
-  loader(outId, inId) {
+  loader(outId, inId, fadeOutTime, fadeInTime) {
     setTimeout(function() {
       $(outId).fadeOut('fast');
-    }, 500);
+    }, fadeOutTime);
     setTimeout(function(id) {
       $(inId).fadeIn('fast');
       
-    }, 1000);
+    }, fadeInTime);
   }
-
-  getEloImage(tier) {
-    var url;
-    if (tier == 'WOOD') {
-      return  "https://i.pinimg.com/originals/d7/58/1b/d7581b2a1033309523d20c9d1a1f4589.png";
-    }
-    else if (tier == 'BRONZE') {
-      return "https://i.pinimg.com/originals/4f/9e/6c/4f9e6c72c9744e912dbf6c19b13101f9.png";
-    }
-    else if (tier == 'SILVER') {
-      return "https://i.pinimg.com/originals/75/61/5a/75615a37309f44c6f07353277429a4f2.png";
-    }
-    else if (tier == 'GOLD') {
-      return "https://i.pinimg.com/originals/d7/58/1b/d7581b2a1033309523d20c9d1a1f4589.png";
-    }
-    else if (tier == 'PLATINUM') {
-      return "https://i.pinimg.com/originals/d7/47/1e/d7471e2ef48175986e9b75b566f61408.png";
-    }
-    else if (tier == 'DIAMOND') {
-      return "https://i.pinimg.com/originals/6a/10/c7/6a10c7e84c9f4e4aa9412582d28f3fd2.png";
-    }
-    else {
-      return ''
-    }
-  }
- 
-
 
   ngOnInit() {
     
     abc.myMethod()
+    abc.onload(this.loader('#loader3', '#container', 500, 1000))
   }
 }

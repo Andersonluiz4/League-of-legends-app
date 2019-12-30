@@ -1,108 +1,113 @@
 <html>
-  <body>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="api.js"></script>
-    <header class="cabecalhoPrincipal">
-      <div id="login">
-        <nav class="cabecalhoPrincipal-login">
-          <a class="cabecalhoPrincipal-nav-link" href="#">Login</a>
-          <a class="cabecalhoPrincipal-nav-link" href="#">Cadastrar</a>
-          <li>
-            <a href="#" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-twitter"></a>
-            <a href="#" class="fa fa-google"></a>
-            <a href="#" class="fa fa-steam"></a>
-          </li>
-         
+  <body style="background-color: black;">
+    <div class="lds-roller" id="loader3" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div id="container" style="display: none;">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script type="text/javascript" src="api.js"></script>
+      <header class="cabecalhoPrincipal">
+        <div id="login">
+          <nav class="cabecalhoPrincipal-login">
+            <a class="cabecalhoPrincipal-nav-link" href="#">Login</a>
+            <a class="cabecalhoPrincipal-nav-link" href="#">Cadastrar</a>
+            <li>
+              <a href="#" class="fa fa-facebook"></a>
+              <a href="#" class="fa fa-twitter"></a>
+              <a href="#" class="fa fa-google"></a>
+              <a href="#" class="fa fa-steam"></a>
+            </li>
+          
 
-        </nav>
+          </nav>
+        </div>
+        <div id="cabecalhoPrincipal">
+          <nav class="cabecalhoPrincipal-nav">
+            <img class="cabecalhoPrincipal-nav-logo" src="/assets/eloImages/Emblem_Challenger.png">
+            <a class="cabecalhoPrincipal-nav-link" href="#">Home <a>Rank Champions</a></a>
+            <a class="cabecalhoPrincipal-nav-link" href="#">Cursos <div>Rank Champions</div></a>
+            <a class="cabecalhoPrincipal-nav-link" href="#">Champions <div>Rank Champions</div></a>
+            <a class="cabecalhoPrincipal-nav-link" href="#">Tier List <div>Rank Champions</div></a>
+          </nav>
+        </div>
+          
+      </header>
+  <div id="wrapper">
+    <div id="new-champ">
+      <a>Campeão em destaque</a>
+    </div>
+    <div id="first-box">
+      <div id=free-week-div>
+        <div id="free-week-champions">
+          <ol id="list">
+          </ol>
+          <h1>Free week champions</h1>
+        </div>
+        <div id="champion-skin">
+          <div id="free-week-image">
+            <h1 id="champ-title"></h1>
+          </div></div>
       </div>
-      <div id="cabecalhoPrincipal">
-        <nav class="cabecalhoPrincipal-nav">
-          <img class="cabecalhoPrincipal-nav-logo" src="https://i.pinimg.com/originals/cd/ab/e1/cdabe19c6dd00048678936575ed9a70a.png">
-          <a class="cabecalhoPrincipal-nav-link" href="#">Home <a>Rank Champions</a></a>
-          <a class="cabecalhoPrincipal-nav-link" href="#">Cursos <div>Rank Champions</div></a>
-          <a class="cabecalhoPrincipal-nav-link" href="#">Champions <div>Rank Champions</div></a>
-          <a class="cabecalhoPrincipal-nav-link" href="#">Tier List <div>Rank Champions</div></a>
-        </nav>
+      <div id="champion-image">
+        <img src="" id='variable-image'>
       </div>
+    </div>
+    <div id="getMastery">
+      <div id="form">
+        <input id="summonerName" [(ngModel)]="summonerName" placeholder="Summoner name..."/>
+        <button (click)="sendValues($event)">Search</button>
+      </div>
+      <div id="error-content">
+        <div class="lds-roller" id="loader2" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <div id="error-message">
+          <a id="error"></a>
+        </div>
+      </div>
+      <div id="info-content">
+        <div class="lds-roller" id="loader" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <div id="summonerInfo">
+          <SELECT id="queuePicker" (change)="sendValues($event)" style="display: none;">
+            <option id="RANKED_SOLO_5x5" value="RANKED_SOLO_5x5">Solo</option>
+            <option id="RANKED_FLEX_SR" value="RANKED_FLEX_SR">Flex</option>
+          </SELECT>
+          <div id="infos">
+            <h1 id="name"></h1>
+          </div>
+          <div id="formInfo">
+            <a id="wins"></a>
+            <a id="losses"></a>
+            <a id="tier"></a>
+            <a id="rate"></a>
+          </div>
+            <div id="imageElo">
+              <img id="eloImage" src="">
+          </div>
+        </div>
         
-    </header>
-<div id="wrapper">
-  <div id="new-champ">
-    <a>Campeão em destaque</a>
-  </div>
-  <div id="first-box">
-    <div id=free-week-div>
-      <div id="free-week-champions">
-        <ol id="list">
-        </ol>
-        <h1>Free week champions</h1>
-      </div>
-      <div id="champion-skin">
-        <div id="free-week-image">
-          <h1 id="champ-title"></h1>
-        </div></div>
-    </div>
-    <div id="champion-image">
-      <img src="" id='variable-image'>
-    </div>
-  </div>
-  <div id="getMastery">
-    <div id="form">
-      <input id="summonerName" [(ngModel)]="summonerName" placeholder="Summoner name..."/>
-      <button (click)="sendValues($event)">Search</button>
-    </div>
-    <div id="error-content">
-      <div class="lds-roller" id="loader2" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-      <div id="error-message">
-        <a id="error"></a>
-      </div>
-    </div>
-    <div id="info-content">
-      <div class="lds-roller" id="loader" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-      <div id="summonerInfo">
-        <SELECT id="queuePicker" (change)="sendValues($event)" style="display: none;">
-          <option id="RANKED_SOLO_5x5" value="RANKED_SOLO_5x5">Solo</option>
-          <option id="RANKED_FLEX_SR" value="RANKED_FLEX_SR">Flex</option>
-        </SELECT>
-        <div id="infos">
-          <h1 id="name"></h1>
-        </div>
-        <div id="formInfo">
-          <a id="wins"></a>
-          <a id="losses"></a>
-          <a id="tier"></a>
-          <a id="rate"></a>
-        </div>
-          <div id="imageElo">
-            <img id="eloImage" src="">
-        </div>
       </div>
       
+      
     </div>
+    <div id="seconds-box">
+      <div id></div>
+      <object data="https://www.youtube.com/v/Y-839Y-cLOk"></object>
+      <object data="https://www.youtube.com/v/zaVYX_pzf0w"></object>
+    </div>
+
+    <footer>
+      <div id="riot-image">
+        <img src="https://img.ibxk.com.br/2019/07/26/26171514413327.jpg">
+        <img src="https://d33jl3tgfli0fm.cloudfront.net/helix/images/landing/developers/2018-11-Riot-Games.png">
+        <img src="https://logodownload.org/wp-content/uploads/2014/09/lol-league-of-Legends-logo.png">
+      </div>
+      <div id="medial-links">
+        <a href="#" class="fa fa-facebook" target="_blank" href="https://www.facebook.com/RiotGames/"></a>
+        <a href="#" class="fa fa-twitter" target="_blank" href="https://twitter.com/RiotGamesAPI"></a>
+        <a href="#" class="fa fa-youtube" target="_blank" href="https://www.youtube.com/channel/UCJEGvSZnQ1pkVfHO8s5G8hA"></a>
+      </div>
     
+    </footer>
     
   </div>
-  <div id="seconds-box">
-    <div id></div>
-    <object data="https://www.youtube.com/v/Y-839Y-cLOk"></object>
-    <object data="https://www.youtube.com/v/zaVYX_pzf0w"></object>
-  </div>
-  
 </div>
 </body>
-<footer>
-  <div id="riot-image">
-    <img src="https://img.ibxk.com.br/2019/07/26/26171514413327.jpg">
-    <img src="https://d33jl3tgfli0fm.cloudfront.net/helix/images/landing/developers/2018-11-Riot-Games.png">
-    <img src="https://logodownload.org/wp-content/uploads/2014/09/lol-league-of-Legends-logo.png">
-  </div>
-  <div id="medial-links">
-    <a href="#" class="fa fa-facebook" target="_blank" href="https://www.facebook.com/RiotGames/"></a>
-    <a href="#" class="fa fa-twitter" target="_blank" href="https://twitter.com/RiotGamesAPI"></a>
-    <a href="#" class="fa fa-youtube" target="_blank" href="https://www.youtube.com/channel/UCJEGvSZnQ1pkVfHO8s5G8hA"></a>
-  </div>
 
-</footer>
 </html>
