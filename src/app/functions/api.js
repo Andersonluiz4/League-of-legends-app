@@ -1,6 +1,6 @@
 let freeWeek;
 let loadImages;
-var apiKey = "RGAPI-7e53143e-46ee-48f7-b6af-0ffcf7dca328"
+var apiKey = "RGAPI-dfe86454-366a-4f7e-beca-ede838bdcfe2"
 export function myMethod() {
     window.axios = require('axios');
 
@@ -20,19 +20,16 @@ export function myMethod() {
             idsList.push(response[1].data.freeChampionIds[i])
         
         for(var x = 0; x < keys.length; x++) {
-            var skin = Math.floor(Math.random() * 8 + 1)
+            var skin = Math.floor(Math.random() * 2 + 1)
             if (idsList.includes(parseInt(keys[x].key))) {
-                var freeWeekLoadImage = '/assets/championImages/splash-images/' + keys[x].name + '_0.jpg'
-                var skinPath = '/assets/championImages/splash-images/' + keys[x].name + '_' + skin + '.jpg'
-                var championInfo = {'name': keys[x].name, 'title': keys[x].title, 'info': keys[x].info, 'url': freeWeekLoadImage, 'skinUrl': skinPath}
+                var freeWeekLoadImage = '/assets/championImages/splash-images/' + keys[x].id + '_0.jpg'
+                var skinPath = '/assets/championImages/splash-images/' + keys[x].id + '_' + skin + '.jpg'
+                var championInfo = {'name': keys[x].id, 'title': keys[x].title, 'info': keys[x].info, 'url': freeWeekLoadImage, 'skinUrl': skinPath}
                 championInfoList.push(championInfo)
-                IdsImage.push(keys[x].id)
-            }
+                var freeWeekPath = '/assets/championImages/small-images/' + keys[x].id + '.png'
+                document.getElementById('list').innerHTML += '<img src="' + freeWeekPath + '" + height=40px;' +'>'
+          }
         
-        }
-        for(var f in IdsImage) {
-            var freeWeekPath = '/assets/championImages/small-images/' + IdsImage[f] + '.png'
-            document.getElementById('list').innerHTML += '<img src="' + freeWeekPath + '" + height=40px;' +'>'
         }
 
         var thisId=0;
@@ -55,11 +52,21 @@ export function myMethod() {
             
             });
         }
+
+        $(document).ready(function() {
+          var $magic = $(".magic"),
+              magicWHalf = $magic.width() / 2;
+          $(document).on("mousemove", function(e) {
+            $magic.css({"left": e.pageX - magicWHalf, "top": e.pageY - magicWHalf});
+          });
+        });
     });
 }
 
 export function onload(loader) {
-    document.getElementById('loader3').style.display = 'inline-block'
+    console.log("0")
+    document.getElementById('loader3').style.display = 'flex'
+    document.getElementById('loader3').style.marginTop = '30px'
     $('#container').css("background-image", "url(/assets/Blac-texture.jpg)"
     );
   }

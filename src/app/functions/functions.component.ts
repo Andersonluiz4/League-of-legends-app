@@ -20,7 +20,7 @@ export class FunctionsComponent implements OnInit {
   theCheckbox = false;
   soloChecked: Boolean;
   flexChecked: Boolean;
-  apiKey = 'RGAPI-7e53143e-46ee-48f7-b6af-0ffcf7dca328'
+  apiKey = 'RGAPI-dfe86454-366a-4f7e-beca-ede838bdcfe2'
 
   championsList: any = [];
 
@@ -33,11 +33,11 @@ export class FunctionsComponent implements OnInit {
   sendValues(e){
     this.marked= e.target.value;
     this.http
-        .get<Object[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=' + this.apiKey)
+        .get<any[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=' + this.apiKey)
         .subscribe(userId  => 
           {
             this.http
-        .get<Object>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + userId.id + '?api_key=' + this.apiKey)
+        .get<any>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + userId.id + '?api_key=' + this.apiKey)
         .subscribe(masteryInfo => {
           this.loader("#loader", "#summonerInfo", 200, 1000)
             this.summonerRank = masteryInfo;
@@ -109,9 +109,18 @@ export class FunctionsComponent implements OnInit {
     }, fadeInTime);
   }
 
+  changeState() {
+    document.getElementById('bodyId').style.display = 'flex'
+    
+  }
+
+  cgangeState2() {
+    
+  }
+
   ngOnInit() {
     
     abc.myMethod()
-    abc.onload(this.loader('#loader3', '#container', 500, 1000))
+    abc.onload(this.loader('#loaderDiv', '#container', 3400, 3500))
   }
 }

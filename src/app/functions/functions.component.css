@@ -1,3 +1,64 @@
+
+
+@font-face {
+  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/Anders.ttf');
+  font-family: test;
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.scene {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: #1d1f20;
+  padding: 20rem;
+  text-align: center;
+}
+#loaderDiv h1 {
+  position: relative;
+  text-transform: uppercase;
+  font-family: test;
+  color: #fff;
+  z-index: 10;
+}
+
+#loadindInfo {
+    display: grid;
+}
+
+#loader3 {
+    position: relative;
+    text-transform: uppercase;
+    font-family: test;
+    color: #fff;
+    z-index: 10;
+  }
+.magic {
+  z-index: 5;
+  position: absolute;
+  top: calc(50% - 10rem);
+  left: calc(50% - 10rem);
+  width: 20rem;
+  height: 20rem;
+  background: url('https://i.pinimg.com/originals/22/49/0d/22490db63367ba74ec73e9e913343f09.jpg') 50% 50% no-repeat fixed;
+  background-size: cover;
+  border-radius: 50%;
+}
+.check-out {
+  z-index: 100;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: #fff;
+  font-family: test;
+
+}
+
 #login {
     background-color: #151f34;
     display: flex;
@@ -13,6 +74,11 @@
     justify-content: space-between;
     background-color: #19202d;
 
+}
+
+#loaderDiv {
+    display: flex;
+    height: -webkit-fill-available;
 }
 
 #summonerInfo {
@@ -124,7 +190,6 @@ footer img {
     align-self: center;
     
 }
-
 #champion-image img{
     width: -webkit-fill-available;
 }
@@ -166,11 +231,6 @@ li:hover {
      background-color: #071736;
 }
 
-body {
-    text-align: center;
-    
-    
-}
 h1{
     color: darkgray;
     font-style: oblique;
@@ -224,6 +284,14 @@ input {
     background-color: lavender;
 }
 
+#background{
+    color: #999999;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}
+
 #getMastery {
     border: 5px solid #1A293A;
     box-shadow: 0 0 6px 1px #060B14, inset 0 0 0 1px #0d1420;
@@ -246,7 +314,6 @@ input {
     box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
     background: #1b2b46;
     flex: 1;
-    padding: 1em;
     margin: 5px;
     
     height: fit-content;
@@ -255,6 +322,10 @@ input {
 #free-week-info {
     display: flex;
     width: 200px;
+}
+
+#loader3 {
+    margin: auto;
 }
 
 #img2 {
@@ -285,7 +356,7 @@ input {
     background: #1b2b46;
     flex: 1;
     margin: 5px;
-    height: 189px;
+    height: 200px;
     color: white;
     display: flex;
     align-items: center;
