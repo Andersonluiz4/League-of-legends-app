@@ -1,7 +1,8 @@
 let freeWeek;
 let loadImages;
-var apiKey = "RGAPI-dfe86454-366a-4f7e-beca-ede838bdcfe2"
-export function myMethod() {
+var apiKey = "RGAPI-dbed690e-2f75-4410-a1b5-7138b9b49928"
+
+export function freeWeekInfo() {
     window.axios = require('axios');
 
     axios.all([
@@ -16,6 +17,7 @@ export function myMethod() {
         freeWeek = []
 
         const keys = Object.values(response[0].data.data)
+        
         for (var i in response[1].data.freeChampionIds)
             idsList.push(response[1].data.freeChampionIds[i])
         
@@ -29,9 +31,7 @@ export function myMethod() {
                 var freeWeekPath = '/assets/championImages/small-images/' + keys[x].id + '.png'
                 document.getElementById('list').innerHTML += '<img src="' + freeWeekPath + '" + height=40px;' +'>'
           }
-        
         }
-
         var thisId=0;
         window.setInterval(function(){
             $('#variable-image').attr('src', championInfoList[thisId].url);
@@ -42,12 +42,12 @@ export function myMethod() {
         },3000 );
 
         function faderImage(message) {
-            $("#champion-skin").fadeOut(20, function() {
+            $("#champion-skin").fadeOut(300, function() {
             $(this).css("background-image", "linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(" + message + ")").fadeIn(700);    
             });
         }
         function faderTitle(message) {
-            $("#champ-title").fadeOut(20, function() {
+            $("#champ-title").fadeOut(300, function() {
             $(this).html(message).fadeIn(700);
             
             });
@@ -60,46 +60,15 @@ export function myMethod() {
             $magic.css({"left": e.pageX - magicWHalf, "top": e.pageY - magicWHalf});
           });
         });
+        return keys
     });
+
+    
 }
 
 export function onload(loader) {
-    console.log("0")
     document.getElementById('loader3').style.display = 'flex'
     document.getElementById('loader3').style.marginTop = '30px'
-    $('#container').css("background-image", "url(/assets/Blac-texture.jpg)"
+    $('#container').css("background-image", "url(/assets/backgroundImage/Blac-texture.jpg)"
     );
-  }
-
-export function getEloImage(tier) {
-    if (tier == 'WOOD') {
-      return  "/assets/eloImages/Emblem_Iron.png";
-    }
-    else if (tier == 'BRONZE') {
-      return "/assets/eloImages/Emblem_Bronze.png";
-    }
-    else if (tier == 'SILVER') {
-      return "/assets/eloImages/Emblem_Silverd.png";
-    }
-    else if (tier == 'GOLD') {
-      return "/assets/eloImages/Emblem_Gold.png";
-    }
-    else if (tier == 'PLATINUM') {
-      return "/assets/eloImages/Emblem_Platinum.png";
-    }
-    else if (tier == 'DIAMOND') {
-      return "/assets/eloImages/Emblem_Diamond.png";
-    }
-    else if (tier == 'MASTER') {
-        return "/assets/eloImages/Emblem_Master.png";
-    }
-    else if (tier == 'GRANDMASTER') {
-        return "/assets/eloImages/Emblem_Master.png";
-    }
-    else if (tier == 'CHALLENGER') {
-        return "/assets/eloImages/Emblem_Challenger.png";
-      }
-    else {
-      return ''
-    }
   }

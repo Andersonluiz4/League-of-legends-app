@@ -59,6 +59,12 @@
 
 }
 
+#cabecalhoPrincipal-list {
+    border: 1px solid #1A293A;
+    box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
+
+}
+
 #login {
     background-color: #151f34;
     display: flex;
@@ -67,7 +73,7 @@
     justify-content: space-between;
 }
 
-#cabecalhoPrincipal {
+#cabecalhoPrincipal-list {
     display: flex;
     align-items: center;
     height: 90px;
@@ -119,17 +125,21 @@
         background-repeat: round;
         margin: 1px;
         border: 1px solid #1A293A;
-        box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420
+        box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
+        width: min-content;
+
     }
 
         #form button {
-           margin-right: 10px;
-           background-color: lavender;
+            margin: 20px;
+            margin-left: 60px;
+            background-color: lavender;
         }
 
 
 #queuePicker {
     height: 30px;
+    background-color: lavender;
 }
 #info-content {
     color: rosybrown;
@@ -146,6 +156,8 @@
 
 footer {
     background-color: #19202d;
+    border: 1px solid #1A293A;
+    box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
 }
 
 footer img {
@@ -194,13 +206,15 @@ footer img {
     width: -webkit-fill-available;
 }
 
-    #cabecalhoPrincipal a:hover {
-        background-color: aliceblue;
-    }
 
 .cabecalhoPrincipal-nav-link {
     color: darkgray;
+    text-align: center;
 
+}
+
+a:hover{
+    opacity: 0.4;
 }
 
 #riot-image {
@@ -217,11 +231,13 @@ footer img {
     max-height: 100%;
     max-width: 100%;
     width: min-content;
+    height: -webkit-fill-available;
 }
 
 #wrapper {
     width: 1136px;
     margin: 0 auto;
+    margin-top: 1px;
     z-index: 150;
     position: relative;
     background-color: #151f34;
@@ -235,7 +251,7 @@ h1{
     color: darkgray;
     font-style: oblique;
     font-size: xx-large;
-
+    text-align: center;
 }
 
 .cabecalhoPrincipal-nav {
@@ -246,26 +262,9 @@ h1{
         cursor: pointer;
     }
 
-.cabecalhoPrincipal-nav:hover {
-    background-color: red;
-}
-
     .cabecalhoPrincipal-nav a {
         display: inline-grid;
         margin: auto ;
-    }
-
-.cabecalhoPrincipal-login {
-    justify-content: space-between;
-    margin-left: auto;
-}
-    .cabecalhoPrincipal-login a {
-        padding: 5px;
-    }
-
-    .cabecalhoPrincipal-nav img {
-        width: 90px;
-        align-self: normal;
     }
 
 .cabecalhoPrincipal {
@@ -273,6 +272,12 @@ h1{
   /* Full height */
   background-color: #151f34;
   background-repeat: round;
+  border: 1px solid #1A293A;
+  box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
+}
+
+#allChampions {
+    height: 200px;
 }
 
 #imageElo img {
@@ -295,7 +300,7 @@ input {
 #getMastery {
     border: 5px solid #1A293A;
     box-shadow: 0 0 6px 1px #060B14, inset 0 0 0 1px #0d1420;
-    height: 200px;
+    height: 205px;
     display: flex;
     margin: 5px;
 }
@@ -316,7 +321,7 @@ input {
     flex: 1;
     margin: 5px;
     
-    height: fit-content;
+    height: auto;
 
 }
 #free-week-info {
@@ -340,12 +345,6 @@ input {
     box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
 }
 
-    #new-champ a {
-        float: left;
-        padding: 30px;
-        color: darkgoldenrod;
-    }
-
 #first-box {
     display: flex;
 }
@@ -356,7 +355,7 @@ input {
     background: #1b2b46;
     flex: 1;
     margin: 5px;
-    height: 200px;
+    height: 207px;
     color: white;
     display: flex;
     align-items: center;
@@ -375,11 +374,15 @@ input {
     justify-content: space-around;
     height: 400px;
     border: 1px solid #1A293A;
-    box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420
+    box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
+    margin-bottom: 1px;
 }
     #seconds-box object {
         width: 50%;
         margin: 10px;
+        border: 1px solid #1A293A;
+        box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
+        padding: 4px;
 
     }
 
@@ -468,4 +471,3 @@ input {
           transform: rotate(360deg);
         }
       }
-      

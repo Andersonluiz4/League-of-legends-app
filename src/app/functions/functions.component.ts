@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as abc from '../functions/api'
+import * as freeWeekLoader from '../../assets/js/functions/freeWeek/freeWeekLoader';
+import * as masteryImage from '../../assets/js/functions/mastery/userMastery'
 
 
 import {HttpClient} from '@angular/common/http'
@@ -20,7 +21,10 @@ export class FunctionsComponent implements OnInit {
   theCheckbox = false;
   soloChecked: Boolean;
   flexChecked: Boolean;
-  apiKey = 'RGAPI-dfe86454-366a-4f7e-beca-ede838bdcfe2'
+  apiKey = 'RGAPI-dbed690e-2f75-4410-a1b5-7138b9b49928'
+  SoloQueue = 'RANKED_SOLO_5x5'
+  FlexQueue = 'RANKED_FLEX_SR'
+
 
   championsList: any = [];
 
@@ -33,11 +37,11 @@ export class FunctionsComponent implements OnInit {
   sendValues(e){
     this.marked= e.target.value;
     this.http
-        .get<any[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=' + this.apiKey)
+        .get<Object[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=' + this.apiKey)
         .subscribe(userId  => 
           {
             this.http
-        .get<any>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + userId.id + '?api_key=' + this.apiKey)
+        .get<Object>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + userId.id + '?api_key=' + this.apiKey)
         .subscribe(masteryInfo => {
           this.loader("#loader", "#summonerInfo", 200, 1000)
             this.summonerRank = masteryInfo;
@@ -46,21 +50,21 @@ export class FunctionsComponent implements OnInit {
             if(this.summonerRank[0] && !this.marked) {
               a = 0;
               if(!fila) {
-                document.getElementById("RANKED_SOLO_5x5").style.display = 'flex'
-                document.getElementById("RANKED_FLEX_SR").style.display = 'flex'
+                document.getElementById(this.SoloQueue).style.display = 'flex'
+                document.getElementById(this.FlexQueue).style.display = 'flex'
               }
             }
             if (this.summonerRank[0] && !this.summonerRank[1]) {
               a = 0;
                 $("#queuePicker").prop("selectedIndex", 0)
                 if (this.summonerRank[0].queueType == this.marked) {
-                  document.getElementById("RANKED_SOLO_5x5").style.display = 'none'
-                  fila = "RANKED_SOLO_5x5"
+                  document.getElementById(this.SoloQueue).style.display = 'none'
+                  fila = this.SoloQueue
 
                 }
                 else {
-                  document.getElementById("RANKED_FLEX_SR").style.display = 'none'
-                  fila = "RANKED_FLEX_SR"
+                  document.getElementById(this.FlexQueue).style.display = 'none'
+                  fila = this.FlexQueue
               }
             }
             
@@ -77,12 +81,11 @@ export class FunctionsComponent implements OnInit {
               document.getElementById('losses').textContent = 'Losses: ' + this.summonerRank[a].losses
               document.getElementById('name').textContent = this.summonerRank[a].summonerName
               document.getElementById('tier').textContent = 'Tier: ' + this.summonerRank[a].tier + " " + this.summonerRank[0].rank
-              document.getElementById('eloImage').setAttribute("src", abc.getEloImage(this.summonerRank[a].tier))
+              document.getElementById('eloImage').setAttribute("src", masteryImage.getEloImage(this.summonerRank[a].tier))
               var totalValue = this.summonerRank[a].wins + this.summonerRank[a].losses
               document.getElementById('rate').textContent = 'Win Rate: ' + String(Math.round((this.summonerRank[a].wins/totalValue) * 100) + '%')
 
             }
-            
             else {
               document.getElementById('error-content').style.display = 'flex'
               document.getElementById('error-message').style.display = 'none'
@@ -109,18 +112,13 @@ export class FunctionsComponent implements OnInit {
     }, fadeInTime);
   }
 
-  changeState() {
-    document.getElementById('bodyId').style.display = 'flex'
-    
-  }
-
-  cgangeState2() {
-    
-  }
+  loginForm() {
+    document.getElementById("login-form").style.display = "block";
+}
 
   ngOnInit() {
     
-    abc.myMethod()
-    abc.onload(this.loader('#loaderDiv', '#container', 3400, 3500))
+    freeWeekLoader.freeWeekInfo()
+    freeWeekLoader.onload(this.loader('#loaderDiv', '#container', 200, 200))
   }
 }
