@@ -8,9 +8,12 @@ export function loadAllChampions() {
     .then(function (response) {
         const keys = Object.values(response[0].data.data)
         for(var x = 0; x < keys.length; x++) {
-            var freeWeekLoadImage = '/assets/championImages/champion-images/' + keys[x].id + '.png'
-            document.getElementById('list').innerHTML += '<div id="' + keys[x].id + '"' + 'width=300px' + 'class="all-champions"> <img id="all-images" src="' + freeWeekLoadImage + '"' + '></div>'
+            var freeWeekLoadImage = '/assets/championImages/loading/' + keys[x].id + '_0.jpg'
+            document.getElementById('list').innerHTML += '<img id="' + keys[x].id + '"' + 'class="img-thumbnail" src="' + freeWeekLoadImage + '"' + '></div>'
+            document.getElementById(keys[x].id).style.height += '170px';
+            document.getElementById(keys[x].id).style.width += '120px';
+            
           }
-        
+          
 });
 }

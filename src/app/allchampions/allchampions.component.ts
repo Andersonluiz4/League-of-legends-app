@@ -9,11 +9,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AllchampionsComponent implements OnInit {
   photos: Object[] = [];
-
   constructor() {
 }
+
+
   ngOnInit() {
-    allchampions.loadAllChampions()
+    
   }
 
 }

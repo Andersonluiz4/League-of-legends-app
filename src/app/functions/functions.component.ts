@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as freeWeekLoader from '../../assets/js/functions/freeWeek/freeWeekLoader';
 import * as masteryImage from '../../assets/js/functions/mastery/userMastery'
+import * as allChampions from '../../assets/js/allChampions/allChampions'
 
 
 import {HttpClient} from '@angular/common/http'
@@ -114,6 +115,11 @@ export class FunctionsComponent implements OnInit {
 
   loginForm() {
     document.getElementById("login-form").style.display = "block";
+}
+
+loadChampions() {
+  allChampions.loadAllChampions()
+  
 }
 
   ngOnInit() {

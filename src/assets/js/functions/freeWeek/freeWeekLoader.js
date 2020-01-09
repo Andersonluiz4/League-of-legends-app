@@ -42,12 +42,12 @@ export function freeWeekInfo() {
         },3000 );
 
         function faderImage(message) {
-            $("#champion-skin").fadeOut(300, function() {
+            $("#champion-skin").fadeOut(20, function() {
             $(this).css("background-image", "linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(" + message + ")").fadeIn(700);    
             });
         }
         function faderTitle(message) {
-            $("#champ-title").fadeOut(300, function() {
+            $("#champ-title").fadeOut(20, function() {
             $(this).html(message).fadeIn(700);
             
             });
