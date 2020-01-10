@@ -22,7 +22,7 @@ export class FunctionsComponent implements OnInit {
   theCheckbox = false;
   soloChecked: Boolean;
   flexChecked: Boolean;
-  apiKey = 'RGAPI-dbed690e-2f75-4410-a1b5-7138b9b49928'
+  apiKey = 'RGAPI-31d34aea-ba4e-472f-8d57-d6001c678b04'
   SoloQueue = 'RANKED_SOLO_5x5'
   FlexQueue = 'RANKED_FLEX_SR'
 
@@ -38,11 +38,11 @@ export class FunctionsComponent implements OnInit {
   sendValues(e){
     this.marked= e.target.value;
     this.http
-        .get<Object[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=' + this.apiKey)
+        .get<any[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=' + this.apiKey)
         .subscribe(userId  => 
           {
             this.http
-        .get<Object>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + userId.id + '?api_key=' + this.apiKey)
+        .get<any>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + userId.id + '?api_key=' + this.apiKey)
         .subscribe(masteryInfo => {
           this.loader("#loader", "#summonerInfo", 200, 1000)
             this.summonerRank = masteryInfo;
@@ -117,14 +117,9 @@ export class FunctionsComponent implements OnInit {
     document.getElementById("login-form").style.display = "block";
 }
 
-loadChampions() {
-  allChampions.loadAllChampions()
-  
-}
 
   ngOnInit() {
-    
+    freeWeekLoader.onload(this.loader('#loaderDiv', '#container', 3000, 3100))
     freeWeekLoader.freeWeekInfo()
-    freeWeekLoader.onload(this.loader('#loaderDiv', '#container', 200, 200))
   }
 }

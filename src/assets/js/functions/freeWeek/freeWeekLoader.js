@@ -1,6 +1,6 @@
 let freeWeek;
 let loadImages;
-var apiKey = "RGAPI-dbed690e-2f75-4410-a1b5-7138b9b49928"
+var apiKey = "RGAPI-31d34aea-ba4e-472f-8d57-d6001c678b04"
 
 export function freeWeekInfo() {
     window.axios = require('axios');

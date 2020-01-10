@@ -35,6 +35,8 @@
     font-family: test;
     color: #fff;
     z-index: 10;
+    margin: auto;
+
   }
 .magic {
   z-index: 5;
@@ -327,10 +329,6 @@ input {
 #free-week-info {
     display: flex;
     width: 200px;
-}
-
-#loader3 {
-    margin: auto;
 }
 
 #img2 {
