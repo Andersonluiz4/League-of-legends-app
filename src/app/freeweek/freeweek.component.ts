@@ -3,7 +3,9 @@ import {HttpClient} from '@angular/common/http'
 
 import * as freeWeekLoader from '../../assets/js/functions/freeWeek/freeWeekLoader';
 import * as summonerTier from '../../assets/js/searchForm/getSummonerInfo'
-import * as $ from 'jquery';
+
+const config = require('../../assets/json/eloAttributes.json')
+
 
 @Component({
   selector: 'app-functions',
@@ -13,10 +15,7 @@ import * as $ from 'jquery';
 
 export class FreeWeekComponent implements OnInit {
   summonerRank: any = {};
-  marked = false;
-  apiKey = 'RGAPI-31d34aea-ba4e-472f-8d57-d6001c678b04'
-  SoloQueue = 'RANKED_SOLO_5x5'
-  FlexQueue = 'RANKED_FLEX_SR'
+  summonerId = false;
 
   championsList: any = [];
 
@@ -27,25 +26,20 @@ export class FreeWeekComponent implements OnInit {
     }
 
   sendValues(input){
-    this.marked= input.target.value;
+    this.summonerId= input.target.value;
     this.http
-        .get<Object[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=' + this.apiKey)
+        .get<any[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=' + config.apikey)
         .subscribe(userId => 
           {
             this.http
-        .get<Object>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + userId.id + '?api_key=' + this.apiKey)
+        .get<any>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + userId.id + '?api_key=' + config.apikey)
         .subscribe(masteryInfo => {
           freeWeekLoader.loader("#loader", "#summonerInfo", 200, 1000)
             this.summonerRank = masteryInfo
-            summonerTier.getSummonerTier(this.summonerRank, this.marked)
+            summonerTier.getSummonerTier(this.summonerRank, this.summonerId)
         })
   })
 }
-
-  loginForm() {
-    document.getElementById("login-form").style.display = "block";
-}
-
   ngOnInit() {
     freeWeekLoader.freeWeekInfo()
     freeWeekLoader.onload(freeWeekLoader.loader('#loaderDiv', '#container', 3500, 3600))

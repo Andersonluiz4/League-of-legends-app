@@ -1,4 +1,7 @@
 import { loader } from '../../js/functions/freeWeek/freeWeekLoader'
+
+const config = require('../../json/eloAttributes.json')
+
 var index;
 var queue;
 export function getSummonerTier(summonerRank, eventValue) {
@@ -6,20 +9,20 @@ export function getSummonerTier(summonerRank, eventValue) {
     if(summonerRank[0] && !eventValue) {
         index = 0;
         if(!queue) {
-            document.getElementById(this.SoloQueue).style.display = 'flex'
-            document.getElementById(this.FlexQueue).style.display = 'flex'
+            document.getElementById(config.soloqueue).style.display = 'flex'
+            document.getElementById(config.flexqueue).style.display = 'flex'
         }
     }
     if (summonerRank[0] && !summonerRank[1]) {
         index = 0;
         $("#queuePicker").prop("selectedIndex", 0)
         if (summonerRank[0].queueType == eventValue) {
-            document.getElementById(this.SoloQueue).style.display = 'none'
-            queue = this.SoloQueue
+            document.getElementById(config.soloqueue).style.display = 'none'
+            queue = config.soloqueue
         }
         else {
-            document.getElementById(this.FlexQueue).style.display = 'none'
-            queue = this.FlexQueue
+            document.getElementById(config.flexqueue).style.display = 'none'
+            queue = config.flexqueue
         }
     }
     if(summonerRank[1] && summonerRank[1].queueType == eventValue) {

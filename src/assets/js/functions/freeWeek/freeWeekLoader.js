@@ -1,16 +1,16 @@
 let freeWeek;
 let loadImages;
-var apiKey = "RGAPI-31d34aea-ba4e-472f-8d57-d6001c678b04"
+const config = require('../../../json/eloAttributes.json')
+
+
 
 export function freeWeekInfo() {
     window.axios = require('axios');
-
     axios.all([
         window.axios.get('http://ddragon.leagueoflegends.com/cdn/9.3.1/data/en_US/champion.json'),
-        window.axios.get('https://br1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=' + apiKey)
+        window.axios.get('https://br1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=' + config.apikey)
     ])
     .then(function (response) {
-        let IdsImage = [];
         let idsList = [];
         loadImages = [];
         let championInfoList = [];
@@ -28,6 +28,7 @@ export function freeWeekInfo() {
                 var skinPath = '/assets/championImages/splash-images/' + keys[data].id + '_' + skin + '.jpg'
                 var championInfo = {'name': keys[data].id, 'title': keys[data].title, 'info': keys[data].info, 'url': freeWeekLoadImage, 'skinUrl': skinPath}
                 championInfoList.push(championInfo)
+                interval(championInfoList, faderImage, faderTitle)
                 var freeWeekPath = '/assets/championImages/small-images/' + keys[data].id + '.png'
                 document.getElementById('list').innerHTML += '<img src="' + freeWeekPath + '" + height=40px;' +'>'
           }
@@ -44,7 +45,6 @@ export function freeWeekInfo() {
             
             });
         }
-
         $(document).ready(function() {
           var $magic = $(".magic"),
               magicWHalf = $magic.width() / 2;
@@ -52,18 +52,19 @@ export function freeWeekInfo() {
             $magic.css({"left": e.pageX - magicWHalf, "top": e.pageY - magicWHalf});
           });
         });
-        var thisId=0;
-        window.setInterval(function(){
-            $('#variable-image').attr('src', championInfoList[thisId].url);
-            faderImage(championInfoList[thisId].skinUrl);
-            faderTitle(championInfoList[thisId].title);
-            thisId++;
-            if (thisId==championInfoList.length) thisId=0;
-        },3000 );
-
     });
 }
 
+function interval(championInfoList, faderImage, faderTitle) {
+    var thisId=0;
+    window.setInterval(function(){
+        $('#variable-image').attr('src', championInfoList[thisId].url);
+        faderImage(championInfoList[thisId].skinUrl);
+        faderTitle(championInfoList[thisId].title);
+        thisId++;
+        if (thisId==championInfoList.length) thisId=0;
+    },3000 );
+}
 export function onload(loader) {
     document.getElementById('loader3').style.display = 'flex'
     document.getElementById('loader3').style.marginTop = '30px'
