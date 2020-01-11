@@ -27,7 +27,7 @@ export class AppComponent {
 
   }
   ngOnInit() {
-    freeWeekLoader.onload(this.loader('#loaderDiv', '#container', 3000, 3100))
+    freeWeekLoader.onload(this.loader('#loaderDiv', '#container', 3200, 3300))
   }
 }
 

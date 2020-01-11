@@ -18,37 +18,29 @@ export function freeWeekInfo() {
 
         const keys = Object.values(response[0].data.data)
         
-        for (var i in response[1].data.freeChampionIds)
-            idsList.push(response[1].data.freeChampionIds[i])
+        for (var id in response[1].data.freeChampionIds)
+            idsList.push(response[1].data.freeChampionIds[id])
         
-        for(var x = 0; x < keys.length; x++) {
+        for(var data = 0; data < keys.length; data++) {
             var skin = Math.floor(Math.random() * 2 + 1)
-            if (idsList.includes(parseInt(keys[x].key))) {
-                var freeWeekLoadImage = '/assets/championImages/splash-images/' + keys[x].id + '_0.jpg'
-                var skinPath = '/assets/championImages/splash-images/' + keys[x].id + '_' + skin + '.jpg'
-                var championInfo = {'name': keys[x].id, 'title': keys[x].title, 'info': keys[x].info, 'url': freeWeekLoadImage, 'skinUrl': skinPath}
+            if (idsList.includes(parseInt(keys[data].key))) {
+                var freeWeekLoadImage = '/assets/championImages/splash-images/' + keys[data].id + '_0.jpg'
+                var skinPath = '/assets/championImages/splash-images/' + keys[data].id + '_' + skin + '.jpg'
+                var championInfo = {'name': keys[data].id, 'title': keys[data].title, 'info': keys[data].info, 'url': freeWeekLoadImage, 'skinUrl': skinPath}
                 championInfoList.push(championInfo)
-                var freeWeekPath = '/assets/championImages/small-images/' + keys[x].id + '.png'
+                var freeWeekPath = '/assets/championImages/small-images/' + keys[data].id + '.png'
                 document.getElementById('list').innerHTML += '<img src="' + freeWeekPath + '" + height=40px;' +'>'
           }
         }
-        var thisId=0;
-        window.setInterval(function(){
-            $('#variable-image').attr('src', championInfoList[thisId].url);
-            faderImage(championInfoList[thisId].skinUrl);
-            faderTitle(championInfoList[thisId].title);
-            thisId++;
-            if (thisId==championInfoList.length) thisId=0;
-        },3000 );
 
         function faderImage(message) {
             $("#champion-skin").fadeOut(20, function() {
-            $(this).css("background-image", "linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(" + message + ")").fadeIn(700);    
+            $(this).css("background-image", "linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(" + message + ")").fadeIn(500);    
             });
         }
         function faderTitle(message) {
             $("#champ-title").fadeOut(20, function() {
-            $(this).html(message).fadeIn(700);
+            $(this).html(message).fadeIn(500);
             
             });
         }
@@ -60,10 +52,16 @@ export function freeWeekInfo() {
             $magic.css({"left": e.pageX - magicWHalf, "top": e.pageY - magicWHalf});
           });
         });
-        return keys
-    });
+        var thisId=0;
+        window.setInterval(function(){
+            $('#variable-image').attr('src', championInfoList[thisId].url);
+            faderImage(championInfoList[thisId].skinUrl);
+            faderTitle(championInfoList[thisId].title);
+            thisId++;
+            if (thisId==championInfoList.length) thisId=0;
+        },3000 );
 
-    
+    });
 }
 
 export function onload(loader) {

@@ -107,12 +107,6 @@
     color: white;
 
 }
-
-#error-message {
-    background-repeat: round;
-    background-image: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("https://pm1.narvii.com/5824/97c9ecbc30bcda7643b3b0edf97b545b66fca9c1_hq.jpg")
-}
-
     #error-message a {
         color: darkgray;
     }
@@ -215,9 +209,6 @@ footer img {
 
 }
 
-a:hover{
-    opacity: 0.4;
-}
 
 #riot-image {
     justify-content: space-around;

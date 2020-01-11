@@ -9,7 +9,6 @@ import * as freeWeekLoader from '../../assets/js/functions/freeWeek/freeWeekLoad
   styleUrls: ['./allchampions.component.css']
 })
 export class AllchampionsComponent implements OnInit {
-  photos: Object[] = [];
   constructor() {
 }
 
@@ -26,7 +25,7 @@ loader(outId, inId, fadeOutTime, fadeInTime) {
 
   ngOnInit() {
     allchampions.loadAllChampions()
-    freeWeekLoader.onload(this.loader('#loaderDiv', '#container', 1000, 1100))
+    freeWeekLoader.onload(this.loader('#loaderDiv', '#container', 2000, 2100))
   }
 
 }

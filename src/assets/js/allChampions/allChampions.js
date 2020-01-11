@@ -13,8 +13,16 @@ export function loadAllChampions() {
             document.getElementById(keys[x].id).style.height += '190px';
             document.getElementById(keys[x].id).style.width += '120px';
             document.getElementById(keys[x].id).style.margin += '10px';
+            document.getElementById(keys[x].id).style.padding += '0px';
             
           }
+          $(document).ready(function() {
+            var $magic = $(".magic"),
+                magicWHalf = $magic.width() / 2;
+            $(document).on("mousemove", function(e) {
+              $magic.css({"left": e.pageX - magicWHalf, "top": e.pageY - magicWHalf});
+            });
+          });
           
 });
 }
