@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FunctionsComponent } from './functions/functions.component';
+import { FreeWeekComponent } from './freeweek/freeweek.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AllchampionsComponent } from './allchampions/allchampions.component';
@@ -11,7 +11,7 @@ import { AllchampionsComponent } from './allchampions/allchampions.component';
 @NgModule({
   declarations: [
     AppComponent,
-    FunctionsComponent,
+    FreeWeekComponent,
     AllchampionsComponent
   ],
   imports: [

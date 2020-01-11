@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FunctionsComponent } from './functions/functions.component';
+import { FreeWeekComponent } from './freeweek/freeweek.component';
 import { AllchampionsComponent } from './allchampions/allchampions.component';
 
 const routes: Routes = [
-  { path: '', component: FunctionsComponent
+  { path: '', component: FreeWeekComponent
  },
   { path: 'allChampions', component: AllchampionsComponent}
 ];

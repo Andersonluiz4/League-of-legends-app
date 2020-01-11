@@ -70,3 +70,12 @@ export function onload(loader) {
     $('#container').css("background-image", "url(/assets/backgroundImage/Blac-texture.jpg)"
     );
   }
+
+export function loader(outId, inId, fadeOutTime, fadeInTime) {
+    setTimeout(function() {
+        $(outId).fadeOut('fast');
+    }, fadeOutTime);
+    setTimeout(function(id) {
+        $(inId).fadeIn('fast');
+    }, fadeInTime);
+}

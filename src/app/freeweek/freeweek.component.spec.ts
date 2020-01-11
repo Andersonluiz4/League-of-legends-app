@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FunctionsComponent } from './functions.component';
+import { FreeWeekComponent } from './freeweek.component';
 
 describe('FunctionsComponent', () => {
-  let component: FunctionsComponent;
-  let fixture: ComponentFixture<FunctionsComponent>;
+  let component: FreeWeekComponent;
+  let fixture: ComponentFixture<FreeWeekComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FunctionsComponent ]
+      declarations: [ FreeWeekComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FunctionsComponent);
+    fixture = TestBed.createComponent(FreeWeekComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

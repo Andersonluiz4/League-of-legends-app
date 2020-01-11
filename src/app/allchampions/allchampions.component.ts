@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as allchampions from '../../assets/js/allChampions/allchampions'
-import { HttpClient } from '@angular/common/http';
 import * as freeWeekLoader from '../../assets/js/functions/freeWeek/freeWeekLoader';
 
 @Component({
@@ -25,7 +24,7 @@ loader(outId, inId, fadeOutTime, fadeInTime) {
 
   ngOnInit() {
     allchampions.loadAllChampions()
-    freeWeekLoader.onload(this.loader('#loaderDiv', '#container', 2000, 2100))
+    freeWeekLoader.onload(this.loader('#loaderDiv', '#container', 1200, 1300))
   }
 
 }

@@ -7,11 +7,11 @@ import * as $ from 'jquery';
 
 @Component({
   selector: 'app-functions',
-  templateUrl: './functions.component.html',
-  styleUrls: ['./functions.component.css']
+  templateUrl: './freeweek.component.html',
+  styleUrls: ['./freeweek.component.css']
 })
 
-export class FunctionsComponent implements OnInit {
+export class FreeWeekComponent implements OnInit {
   summonerRank: any = {};
   marked = false;
   apiKey = 'RGAPI-31d34aea-ba4e-472f-8d57-d6001c678b04'
@@ -29,27 +29,18 @@ export class FunctionsComponent implements OnInit {
   sendValues(input){
     this.marked= input.target.value;
     this.http
-        .get<any[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=' + this.apiKey)
+        .get<Object[]>('https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=' + this.apiKey)
         .subscribe(userId => 
           {
             this.http
-        .get<any>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + userId.id + '?api_key=' + this.apiKey)
+        .get<Object>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + userId.id + '?api_key=' + this.apiKey)
         .subscribe(masteryInfo => {
-          this.loader("#loader", "#summonerInfo", 200, 1000)
+          freeWeekLoader.loader("#loader", "#summonerInfo", 200, 1000)
             this.summonerRank = masteryInfo
-            summonerTier.getSummonerTier(this.summonerRank, this.marked, this.loader)
+            summonerTier.getSummonerTier(this.summonerRank, this.marked)
         })
   })
 }
-
-  loader(outId, inId, fadeOutTime, fadeInTime) {
-    setTimeout(function() {
-      $(outId).fadeOut('fast');
-    }, fadeOutTime);
-    setTimeout(function(id) {
-      $(inId).fadeIn('fast');
-    }, fadeInTime);
-  }
 
   loginForm() {
     document.getElementById("login-form").style.display = "block";
@@ -57,6 +48,6 @@ export class FunctionsComponent implements OnInit {
 
   ngOnInit() {
     freeWeekLoader.freeWeekInfo()
-    freeWeekLoader.onload(this.loader('#loaderDiv', '#container', 3500, 3600))
+    freeWeekLoader.onload(freeWeekLoader.loader('#loaderDiv', '#container', 3500, 3600))
   }
 }
