@@ -114,6 +114,7 @@
 #formInfo {
     display: grid;
     color: darkgray;
+    align-content: space-around;
 }
 
     #form {

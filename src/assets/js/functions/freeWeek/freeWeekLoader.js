@@ -2,8 +2,6 @@ let freeWeek;
 let loadImages;
 const config = require('../../../json/eloAttributes.json')
 
-
-
 export function freeWeekInfo() {
     window.axios = require('axios');
     axios.all([
@@ -28,7 +26,7 @@ export function freeWeekInfo() {
                 var skinPath = '/assets/championImages/splash-images/' + keys[data].id + '_' + skin + '.jpg'
                 var championInfo = {'name': keys[data].id, 'title': keys[data].title, 'info': keys[data].info, 'url': freeWeekLoadImage, 'skinUrl': skinPath}
                 championInfoList.push(championInfo)
-                interval(championInfoList, faderImage, faderTitle)
+                
                 var freeWeekPath = '/assets/championImages/small-images/' + keys[data].id + '.png'
                 document.getElementById('list').innerHTML += '<img src="' + freeWeekPath + '" + height=40px;' +'>'
           }
@@ -52,6 +50,7 @@ export function freeWeekInfo() {
             $magic.css({"left": e.pageX - magicWHalf, "top": e.pageY - magicWHalf});
           });
         });
+        interval(championInfoList, faderImage, faderTitle)
     });
 }
 
@@ -61,6 +60,7 @@ function interval(championInfoList, faderImage, faderTitle) {
         $('#variable-image').attr('src', championInfoList[thisId].url);
         faderImage(championInfoList[thisId].skinUrl);
         faderTitle(championInfoList[thisId].title);
+        console.log(new Date().toLocaleString())
         thisId++;
         if (thisId==championInfoList.length) thisId=0;
     },3000 );
