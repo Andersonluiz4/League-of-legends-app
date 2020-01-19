@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import * as freeWeekLoader from '../assets/js/functions/freeWeek/freeWeekLoader';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent {
 
   }
   ngOnInit() {
+    freeWeekLoader.Intervalo()
   }
 }
 
