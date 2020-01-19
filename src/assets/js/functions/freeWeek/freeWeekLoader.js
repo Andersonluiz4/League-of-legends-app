@@ -1,5 +1,6 @@
-let freeWeek;
-let loadImages;
+
+import * as loadStyle from '../../style/style'
+
 var championInfoList = [];
 let config = require('../../../json/eloAttributes.json')
 window.axios = require('axios');
@@ -11,8 +12,6 @@ export function freeWeekInfo() {
     ])
     .then(function (response) { 
         let idsList = [];
-        loadImages = [];
-        freeWeek = []
         const keys = Object.values(response[0].data.data)
         for (var id in response[1].data.freeChampionIds) {
             idsList.push(response[1].data.freeChampionIds[id])
@@ -28,15 +27,20 @@ export function freeWeekInfo() {
                 document.getElementById('list').innerHTML += '<img src="' + freeWeekPath + '" + height=40px;' +'>'
             }
         }
-        $(document).ready(function() {
-        var $magic = $(".magic"),
-            magicWHalf = $magic.width() / 2;
-        $(document).on("mousemove", function(e) {
-            $magic.css({"left": e.pageX - magicWHalf, "top": e.pageY - magicWHalf});
-        });
-        });
+        loadStyle.onLoadStyle()    
     });    
 }
+export function interval() {
+    var thisId=0;
+    window.setInterval(function() {
+        $('#variable-image').attr('src', championInfoList[thisId].url);
+        faderImage(championInfoList[thisId].skinUrl);
+        faderTitle(championInfoList[thisId].title);
+        thisId++;
+        if (thisId==championInfoList.length) thisId=0;
+    },2500 );
+}
+
 function faderImage(message) {
     $("#champion-skin").fadeOut(20, function() {
     $(this).css("background-image", "linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(" + message + ")").fadeIn(500);    
@@ -47,33 +51,4 @@ function faderTitle(message) {
     $(this).html(message).fadeIn(500);
     
     });
-}
-export function interval(faderImage, faderTitle) {
-    var thisId=0;
-    window.setInterval(function(){
-        $('#variable-image').attr('src', championInfoList[thisId].url);
-        faderImage(championInfoList[thisId].skinUrl);
-        faderTitle(championInfoList[thisId].title);
-        console.log(new Date().toLocaleString())
-        thisId++;
-        if (thisId==championInfoList.length) thisId=0;
-    },2000 );
-}
-export function onload(loader) {
-    document.getElementById('loader3').style.display = 'flex'
-    document.getElementById('loader3').style.marginTop = '30px'
-    $('#container').css("background-image", "url(/assets/backgroundImage/Blac-texture.jpg)"
-    );
-}
-
-export function loader(outId, inId, fadeOutTime, fadeInTime) {
-    setTimeout(function() {
-        $(outId).fadeOut('fast');
-    }, fadeOutTime);
-    setTimeout(function(id) {
-        $(inId).fadeIn('fast');
-    }, fadeInTime);
-}
-export function Intervalo() {
-    interval(faderImage, faderTitle)
 }

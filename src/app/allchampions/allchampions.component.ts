@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import * as allchampions from '../../assets/js/allChampions/allchampions'
-import * as freeWeekLoader from '../../assets/js/functions/freeWeek/freeWeekLoader';
+import {onload, loader} from '../../assets/js/style/style';
 
 @Component({
   selector: 'app-allchampions',
@@ -14,7 +14,7 @@ export class AllchampionsComponent implements OnInit {
 
   ngOnInit() {
     allchampions.loadAllChampions()
-    freeWeekLoader.onload(freeWeekLoader.loader('#loaderDiv', '#container', 1200, 1300))
+    onload(loader('#loaderDiv', '#container', 1200, 1300))
   }
 
 }

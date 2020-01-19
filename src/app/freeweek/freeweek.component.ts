@@ -3,10 +3,11 @@ import {HttpClient} from '@angular/common/http'
 
 import * as freeWeekLoader from '../../assets/js/functions/freeWeek/freeWeekLoader';
 import * as summonerTier from '../../assets/js/searchForm/getSummonerInfo'
-declare var require: any
+import * as styleLoader from '../../assets/js/style/style';
+
 
 const config = require('../../assets/json/eloAttributes.json')
-
+declare var require: any
 
 @Component({
   selector: 'app-functions',
@@ -18,13 +19,11 @@ export class FreeWeekComponent implements OnInit {
   summonerRank: any = {};
   userInfo: any = {};
   summonerId = false;
-
   championsList: any = [];
-
   summonerName: string;
   
-    constructor(private http:HttpClient) {
-    }
+  constructor(private http:HttpClient) {
+  }
 
   sendValues(input){
     this.summonerId= input.target.value;
@@ -35,7 +34,7 @@ export class FreeWeekComponent implements OnInit {
             this.http
         .get<any>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + this.userInfo.id + '?api_key=' + config.apikey)
         .subscribe(masteryInfo => {
-          freeWeekLoader.loader("#loader", "#summonerInfo", 200, 1000)
+          styleLoader.loader("#loader", "#summonerInfo", 200, 1000)
             this.summonerRank = masteryInfo
             summonerTier.getSummonerTier(this.summonerRank, this.summonerId)
         })
@@ -43,7 +42,7 @@ export class FreeWeekComponent implements OnInit {
 }
   ngOnInit() {
     freeWeekLoader.freeWeekInfo()
-    freeWeekLoader.onload(freeWeekLoader.loader('#loaderDiv', '#container', 2500, 2600))
+    styleLoader.onload(styleLoader.loader('#loaderDiv', '#container', 3000, 3100))
     
   }
 }

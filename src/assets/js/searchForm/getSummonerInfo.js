@@ -1,10 +1,9 @@
-import { loader } from '../../js/functions/freeWeek/freeWeekLoader'
 import * as masteryImage from '../../js/functions/mastery/userMastery'
+import { loader } from '../style/style'
 
 const config = require('../../json/eloAttributes.json')
 
 var index;
-var queue;
 export function getSummonerTier(summonerRank, eventValue) {
     if(summonerRank[0] && !eventValue) {
         index = 0;
@@ -22,11 +21,13 @@ export function getSummonerTier(summonerRank, eventValue) {
     if(summonerRank[1] && summonerRank[1].queueType == eventValue) {
         index = 1;
     }
+    else {
+        index = 0;
+    }
     if (summonerRank[0] && summonerRank[1]) {
         document.getElementById(config.soloqueue).style.display = 'flex'
-        document.getElementById(config.flexqueue).style.display = 'flex'
+        document.getElementById(config.flexqueue).style.display = 'flex'  
     }
-    
     if(summonerRank[0]) {
         document.getElementById('info-content').style.display = 'flex'
         document.getElementById('queuePicker').style.display = 'flex'
