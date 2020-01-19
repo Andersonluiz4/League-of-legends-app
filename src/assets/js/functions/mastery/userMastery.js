@@ -6,7 +6,7 @@ export function getEloImage(tier) {
       return "/assets/eloImages/Emblem_Bronze.png";
     }
     else if (tier == 'SILVER') {
-      return "/assets/eloImages/Emblem_Silverd.png";
+      return "/assets/eloImages/Emblem_Silver.png";
     }
     else if (tier == 'GOLD') {
       return "/assets/eloImages/Emblem_Gold.png";
