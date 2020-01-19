@@ -137,6 +137,7 @@
 #queuePicker {
     height: 30px;
     background-color: lavender;
+    margin-top: 2px;
 }
 #info-content {
     color: rosybrown;
