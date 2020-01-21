@@ -47,6 +47,6 @@ export class FreeWeekComponent implements OnInit {
           
   ngOnInit() {
     freeWeekLoader.freeWeekInfo()
-    styleLoader.onload(styleLoader.loader('#loaderDiv', '#container', 100, 100))
+    styleLoader.onload(styleLoader.loader('#loaderDiv', '#container', 2700, 2700))
   }
 }
