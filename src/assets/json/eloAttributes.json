@@ -1,5 +1,14 @@
 {
-    "apikey": "RGAPI-74a449ed-fac7-44c1-8b6d-24d5d455f436",
+    "apikey": "RGAPI-6989ce1f-7a68-4760-b6e9-3890e5b3e149",
     "soloqueue": "RANKED_SOLO_5x5",
-    "flexqueue": "RANKED_FLEX_SR"
+    "flexqueue": "RANKED_FLEX_SR",
+    "woodtier": "WOOD",
+    "bronzeTier": "BRONZE",
+    "silverTier": "SILVER",
+    "goldTier": "GOLD",
+    "platinumTier": "PLATINUM",
+    "diamondTier": "DIAMOND",
+    "masterTier": "MASTER",
+    "grandmasterTier": "GRANDMASTER",
+    "challengerTier": "CHALLENGER"
   }
