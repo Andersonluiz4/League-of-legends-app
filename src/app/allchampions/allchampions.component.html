@@ -23,6 +23,18 @@
       </div>
   </header>
   <div id="wrapper">
+    <div id="searchForm">
+      <div id="searchField">
+        <input id="summonerName" [(ngModel)]="summonerName" (ngModelChange)="modelChange($event)" placeholder="Champion name..."/>
+      </div>
+      <div id="routeIcons">
+        <img class="routeIcor" src="assets/routesImages/tank.png" (click)="filterByTitle('tank')">
+        <img class="routeIcor" src="assets/routesImages/assassin.png" (click)="filterByTitle('assassin')">
+        <img class="routeIcor" src="assets/routesImages/mage.png" (click)="filterByTitle('mage')">
+        <img class="routeIcor" src="assets/routesImages/figther.png" (click)="filterByTitle('figther')">
+        <img class="routeIcor" src="assets/routesImages/support.png" (click)="filterByTitle('support')">
+      </div>
+    </div>
     <div id="champions">
       <ol id="list">
       </ol>

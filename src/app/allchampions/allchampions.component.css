@@ -257,3 +257,27 @@ footer img {
       transform: rotate(360deg);
     }
   }
+
+#searchForm {
+  height: 100px;
+}
+
+#searchForm img {
+  height: 30px;
+  margin-right: 20px;
+}
+#searchForm img:hover {
+  opacity: 0.3;
+}
+
+
+#searchField {
+  display: flex;
+  padding: 15px;
+  justify-content: center;
+}
+
+#routeIcons {
+  display: flex;
+  justify-content: center;
+}

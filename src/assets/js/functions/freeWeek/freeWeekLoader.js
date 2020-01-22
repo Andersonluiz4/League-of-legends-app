@@ -18,6 +18,7 @@ export function freeWeekInfo() {
         }
         for(var data = 0; data < keys.length; data++) {
             var skin = Math.floor(Math.random() * 2 + 1)
+            console.log(keys[data].tags)
             if (idsList.includes(parseInt(keys[data].key))) {
                 var freeWeekLoadImage = '/assets/championImages/splash-images/' + keys[data].id + '_0.jpg'
                 var skinPath = '/assets/championImages/splash-images/' + keys[data].id + '_' + skin + '.jpg'
