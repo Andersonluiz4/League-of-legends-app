@@ -27,14 +27,16 @@ export class AllchampionsComponent implements OnInit {
   }
   public filterByTitle(description) {
       $(".img-thumbnail").each(function(){
-        if ($(this).attr('title').search(new RegExp(description , "i")) < 0) {
-          $(this).fadeOut(20); 
+          if ($(this).attr('title').search(new RegExp(description , "i")) < 0) {
+            $(this).fadeOut(20);
         }
-    else {
-      $(this).show();
-    }
-  })
-    }
+        else {
+          $(this).show();
+        }
+      })
+      $(".img-thumbnail").show();
+  }
+
   constructor() {
     
 }
