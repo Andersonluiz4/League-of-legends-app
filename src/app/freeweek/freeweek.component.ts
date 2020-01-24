@@ -25,6 +25,21 @@ export class FreeWeekComponent implements OnInit {
   constructor(private http:HttpClient) {
   }
 
+
+  checkApiKey() {
+    const apiUrl = 'https://br1.api.riotgames.com/lol/status/v3/shard-data?api_key=' + config.apikey
+    const promise = this.http.get(apiUrl).toPromise();
+    promise.then((data)=>{
+      freeWeekLoader.freeWeekInfo()
+      styleLoader.onload(styleLoader.loader('#loaderDiv', '#container', 2700, 2700))
+    }).catch((error)=>{
+      document.getElementById('bodyId').style.display = 'None'
+      document.getElementById('apiError').style.display = 'grid'
+      document.getElementById('apiErrorMessage').textContent = "Response : " +  error.status + " - " + error.statusText + ", Please check you api key."
+      
+    });
+    }
+
   sendValues(input){
     this.summonerId= input.target.value;
     const apiUrl = 'https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=' + config.apikey
@@ -46,7 +61,6 @@ export class FreeWeekComponent implements OnInit {
   }
           
   ngOnInit() {
-    freeWeekLoader.freeWeekInfo()
-    styleLoader.onload(styleLoader.loader('#loaderDiv', '#container', 2700, 2700))
+    this.checkApiKey()
   }
 }

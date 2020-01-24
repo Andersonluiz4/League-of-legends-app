@@ -46,3 +46,9 @@ export function championTier(summonerRank, index) {
         var totalValue = summonerRank[index].wins + summonerRank[index].losses
         document.getElementById('rate').textContent = 'Win Rate: ' + String(Math.round((summonerRank[index].wins/totalValue) * 100) + '%')
 }
+
+export function routesIcons() {
+    $('.routeIcor').click(function() {
+        $(this).parent().find('.routeIcor').css('display', 'none');
+      })
+}

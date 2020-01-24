@@ -462,3 +462,24 @@ input {
           transform: rotate(360deg);
         }
       }
+
+#apiError {
+  align-content: center;
+  height: -webkit-fill-available;
+  background-image: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("https://i.pinimg.com/originals/44/9d/ae/449daee0ee49b0053cd7ccf05bcfefd1.jpg");
+  background-repeat: round;
+}
+
+#apiError a {
+  width: -webkit-fill-available;
+  text-align: center;
+  align-self: center;
+  padding: 30px;
+  color: ghostwhite;
+
+}
+
+#apiError img {
+  margin: auto;
+  height: 200px;
+}

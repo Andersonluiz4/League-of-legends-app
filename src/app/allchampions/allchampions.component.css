@@ -128,6 +128,7 @@
 
 #wrapper {
     width: 1136px;
+    min-height: 435px;
     margin: 0 auto;
     margin-top: 1px;
     z-index: 150;

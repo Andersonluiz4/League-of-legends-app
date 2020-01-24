@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Pipe, PipeTransform } from '@angular/core';
 import * as allchampions from '../../assets/js/allChampions/allchampions'
-import {onload, loader} from '../../assets/js/style/style';
+import {onload, loader, routesIcons} from '../../assets/js/style/style';
 import * as $ from 'jquery';
 
 
@@ -17,7 +16,6 @@ export class AllchampionsComponent implements OnInit {
   click: number = 0;
   removeFilter: number = 0;
   idList: any = [];
-
 
   public modelChange(str: string): void {
     if(this.click == 0) {
@@ -48,25 +46,23 @@ export class AllchampionsComponent implements OnInit {
       }
       else {
         $(this).show();
-        console.log("change to filter")
         $(this).attr('class', 'filteredIds');
       }
-      
     })
     this.click = 1;
-
   }
 
   public removeFilters() {
+    $(".routeIcor").parent().find('.routeIcor').css('display', 'block');
     $(".champions-images").show();
     $(".filteredIds").attr('class', 'champions-images');
     this.click = 0;
   }
 
   constructor() {
-    
 }
   ngOnInit() {
+    routesIcons()
     allchampions.loadAllChampions()
     onload(loader('#loaderDiv', '#container', 1200, 1300))
   }
