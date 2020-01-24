@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import * as allchampions from '../../assets/js/allChampions/allchampions'
 import {onload, loader, routesIcons} from '../../assets/js/style/style';
+import {AppComponent} from '../app.component'
+
 import * as $ from 'jquery';
 
 
 @Component({
+  providers:[AppComponent],
   selector: 'app-allchampions',
   templateUrl: './allchampions.component.html',
   styleUrls: ['./allchampions.component.css']
@@ -59,9 +62,10 @@ export class AllchampionsComponent implements OnInit {
     this.click = 0;
   }
 
-  constructor() {
+  constructor(private comp: AppComponent) {
 }
   ngOnInit() {
+    this.comp.checkApiKey()
     routesIcons()
     allchampions.loadAllChampions()
     onload(loader('#loaderDiv', '#container', 1200, 1300))
