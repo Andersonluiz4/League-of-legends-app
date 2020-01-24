@@ -139,8 +139,12 @@
     display: contents;
 }
 
-.img-thumbnail {
+.champions-images {
     padding: 1px;
+}
+
+#champions {
+  margin-left: 7px;
 }
 
 footer {

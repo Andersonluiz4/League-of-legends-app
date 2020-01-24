@@ -28,12 +28,13 @@
         <input id="summonerName" [(ngModel)]="summonerName" (ngModelChange)="modelChange($event)" placeholder="Champion name..."/>
       </div>
       <div id="routeIcons">
-        <img class="routeIcor" src="assets/routesImages/tank.png" (click)="filterByTitle('tank')">
-        <img class="routeIcor" src="assets/routesImages/assassin.png" (click)="filterByTitle('assassin')">
-        <img class="routeIcor" src="assets/routesImages/mage.png" (click)="filterByTitle('mage')">
-        <img class="routeIcor" src="assets/routesImages/figther.png" (click)="filterByTitle('fighter')">
-        <img class="routeIcor" src="assets/routesImages/support.png" (click)="filterByTitle('support')">
-        <img class="routeIcor" src="assets/routesImages/marksman.png" (click)="filterByTitle('marksman')">
+        <img class="routeIcor" title="Tank" src="assets/routesImages/tank.png" (click)="filterByTitle('tank')">
+        <img class="routeIcor" title="Assassin" src="assets/routesImages/assassin.png" (click)="filterByTitle('assassin')">
+        <img class="routeIcor" title="Mage" src="assets/routesImages/mage.png" (click)="filterByTitle('mage')">
+        <img class="routeIcor" title="Fighter" src="assets/routesImages/figther.png" (click)="filterByTitle('fighter')">
+        <img class="routeIcor" title="Support" src="assets/routesImages/support.png" (click)="filterByTitle('support')">
+        <img class="routeIcor" title="Marksman" src="assets/routesImages/marksman.png" (click)="filterByTitle('marksman')">
+        <button (click)="removeFilters()">Remove filters</button>
       </div>
     </div>
     <div id="champions">
