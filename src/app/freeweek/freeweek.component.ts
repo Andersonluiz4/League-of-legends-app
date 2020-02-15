@@ -32,7 +32,6 @@ export class FreeWeekComponent implements OnInit {
     const apiUrl = 'https://br1.api.riotgames.com/lol/status/v3/shard-data?api_key=' + config.apikey
     const promise = this.http.get(apiUrl).toPromise();
     promise.then((data)=>{
-      freeWeekLoader.freeWeekInfo()
       styleLoader.onload(styleLoader.loader('#loaderDiv', '#container', 2700, 2700))
     }).catch((error)=>{
       if(error.status == 0) {
@@ -60,7 +59,7 @@ export class FreeWeekComponent implements OnInit {
           styleLoader.loader("#loader", "#summonerInfo", 200, 1000),
           summonerTier.getSummonerTier(this.summonerRank, this.summonerId)
         })
-    }).catch((error)=>{
+    }).catch(()=>{
       styleLoader.loader("#loader2", "#error-message", 500, 1000)
       styleLoader.errorMessage("Invalid summoner name")
       
