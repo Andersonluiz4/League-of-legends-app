@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 
-import * as freeWeekLoader from '../../assets/js/functions/freeWeek/freeWeekLoader';
 import * as summonerTier from '../../assets/js/searchForm/getSummonerInfo'
 import * as styleLoader from '../../assets/js/style/style';
 import {AppComponent} from '../app.component'
