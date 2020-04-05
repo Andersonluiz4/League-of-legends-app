@@ -5,31 +5,53 @@ var championInfoList = [];
 let config = require('../../../json/eloAttributes.json')
 window.axios = require('axios');
 
-export function freeWeekInfo() {
-        axios.all([
+export function freeWeekInfo(value) {
+    
+    axios.all([
         window.axios.get('http://ddragon.leagueoflegends.com/cdn/9.3.1/data/en_US/champion.json'),
         window.axios.get('https://br1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=' + config.apikey)
     ])
     .then(function (response) { 
         let idsList = [];
         const keys = Object.values(response[0].data.data)
-        for (var id in response[1].data.freeChampionIds) {
-            idsList.push(response[1].data.freeChampionIds[id])
-        }
-        for(var data = 0; data < keys.length; data++) {
-            var skin = Math.floor(Math.random() * 2 + 1)
-            if (idsList.includes(parseInt(keys[data].key))) {
-                var freeWeekLoadImage = '/assets/championImages/splash-images/' + keys[data].id + '_0.jpg'
-                var skinPath = '/assets/championImages/splash-images/' + keys[data].id + '_' + skin + '.jpg'
-                var championInfo = {'name': keys[data].id, 'title': keys[data].title, 'info': keys[data].info, 'url': freeWeekLoadImage, 'skinUrl': skinPath}
-                championInfoList.push(championInfo)
-                var freeWeekPath = '/assets/championImages/small-images/' + keys[data].id + '.png'
-                document.getElementById('list').innerHTML += '<img src="' + freeWeekPath + '" + height=40px;' +'>'
+        if(!value) {
+            for (var id in response[1].data.freeChampionIds) {
+                idsList.push(response[1].data.freeChampionIds[id])
             }
+            for(var data = 0; data < keys.length; data++) {
+                var skin = Math.floor(Math.random() * 2 + 1)
+                if (idsList.includes(parseInt(keys[data].key))) {
+                    var freeWeekLoadImage = '/assets/championImages/splash-images/' + keys[data].id + '_0.jpg'
+                    var skinPath = '/assets/championImages/splash-images/' + keys[data].id + '_' + skin + '.jpg'
+                    var championInfo = {'name': keys[data].id, 'title': keys[data].title, 'info': keys[data].info, 'url': freeWeekLoadImage, 'skinUrl': skinPath}
+                    championInfoList.push(championInfo)
+                    var freeWeekPath = '/assets/championImages/small-images/' + keys[data].id + '.png'
+                    document.getElementById('list').innerHTML += '<img src="' + freeWeekPath + '" + height=40px;' +'>'
+                }
+            }
+            loadStyle.onLoadStyle()
+        } else {
+            axios.all([
+            window.axios.get('https://br1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/' + value + '?api_key=' + config.apikey)
+            ])
+            .then(function (id) { 
+                var mostPlayedChamp = [id[0].data[0].championId]
+                for(var data = 0; data < keys.length; data++) {
+                    if (mostPlayedChamp.includes(parseInt(keys[data].key))) {
+                        var freeWeekLoadImage = '/assets/championImages/splash-images/' + keys[data].name + '_0.jpg'
+                        console.log(freeWeekLoadImage)
+                        $("#info-content").css("background-image", "linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(" + freeWeekLoadImage + ")");
+                        // document.getElementById("info-content").style.backgroundImage = "rgba(255, 255, 255, 0.5) url(" + freeWeekLoadImage + ")";
+                    }
+                }
+            });
+
         }
-        loadStyle.onLoadStyle()    
-    });    
+    
+    });
 }
+
+        
 export function interval() {
     var thisId=0;
     window.setInterval(function() {

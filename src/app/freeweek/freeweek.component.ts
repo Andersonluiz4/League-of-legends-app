@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
 import * as summonerTier from '../../assets/js/searchForm/getSummonerInfo'
+import * as fw from '../../assets/js/functions/freeWeek/freeWeekLoader'
 import * as styleLoader from '../../assets/js/style/style';
 import {AppComponent} from '../app.component'
 
@@ -51,6 +52,7 @@ export class FreeWeekComponent implements OnInit {
     const promise = this.http.get(apiUrl).toPromise();
     promise.then((data)=>{
       this.userInfo = data,
+      fw.freeWeekInfo(this.userInfo.id)
       this.http
         .get<any>('https://br1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + this.userInfo.id + '?api_key=' + config.apikey)
         .subscribe(masteryInfo => {

@@ -68,7 +68,7 @@ export class AllchampionsComponent implements OnInit {
     this.comp.checkApiKey()
     routesIcons()
     allchampions.loadAllChampions()
-    onload(loader('#loaderDiv', '#container', 1200, 1300))
+    onload(loader('#loaderDiv', '#container', 100, 100))
   }
 
 }
