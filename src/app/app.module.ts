@@ -7,12 +7,14 @@ import { FreeWeekComponent } from './freeweek/freeweek.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AllchampionsComponent } from './allchampions/allchampions.component';
+import { SpectatorComponent } from './spectator/spectator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FreeWeekComponent,
-    AllchampionsComponent
+    AllchampionsComponent,
+    SpectatorComponent
   ],
   imports: [
     BrowserModule,

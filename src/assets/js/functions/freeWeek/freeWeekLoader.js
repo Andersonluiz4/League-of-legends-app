@@ -41,7 +41,6 @@ export function freeWeekInfo(value) {
                         var freeWeekLoadImage = '/assets/championImages/splash-images/' + keys[data].name + '_0.jpg'
                         console.log(freeWeekLoadImage)
                         $("#info-content").css("background-image", "linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(" + freeWeekLoadImage + ")");
-                        // document.getElementById("info-content").style.backgroundImage = "rgba(255, 255, 255, 0.5) url(" + freeWeekLoadImage + ")";
                     }
                 }
             });
@@ -50,8 +49,7 @@ export function freeWeekInfo(value) {
     
     });
 }
-
-        
+   
 export function interval() {
     var thisId=0;
     window.setInterval(function() {

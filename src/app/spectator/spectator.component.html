@@ -1,0 +1,57 @@
+<html>
+  <div id="apiError" style="display: none;">
+    <img src="https://i.ya-webdesign.com/images/error-image-png-6.png">
+    <a id="apiErrorMessage"></a>
+  </div>
+<body id="bodyId" style="background-image: url(assets/backgroundImage/Blac-texture.jpg)">
+  <!-- <div id="loaderDiv">
+    <div class="scene">
+      <div id="loadingInfos">
+        <h1>League of Legeds stats</h1>
+      <div class="lds-roller" id="loader3" style="display: none;"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+      <div class="magic">
+
+      </div>
+    </div>
+  </div> -->
+  
+  <div id="container">
+  <header class="cabecalhoPrincipal">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <div id="cabecalhoPrincipal-list">
+        <nav class="cabecalhoPrincipal-nav">
+          <a routerLink="" class="cabecalhoPrincipal-nav-link" href="#">Home</a>
+           <a onClick="window.location.reload();" routerLink="/allChampions" class="cabecalhoPrincipal-nav-link" href="#">All <div>Champions</div></a>
+        </nav>
+      </div>
+  </header>
+  <div id="wrapper">
+    <div id="searchForm">
+        <div id="form">
+            <input id="summonerName" [(ngModel)]="summonerName" placeholder="Summoner name..."/>
+            <button (click)="getSpectateInfo($event)">Search</button>
+          </div>
+    </div>
+    <div id="champions1">
+      <ol id="list1">
+      </ol>
+    </div>
+      
+  </div>
+
+  <footer>
+    <div id="riot-image">
+      <img src="https://img.ibxk.com.br/2019/07/26/26171514413327.jpg">
+      <img src="https://d33jl3tgfli0fm.cloudfront.net/helix/images/landing/developers/2018-11-Riot-Games.png">
+      <img src="https://logodownload.org/wp-content/uploads/2014/09/lol-league-of-Legends-logo.png">
+    </div>
+    <div id="medial-links">
+      <a href="#" class="fa fa-facebook" target="_blank" href="https://www.facebook.com/RiotGames/"></a>
+      <a href="#" class="fa fa-twitter" target="_blank" href="https://twitter.com/RiotGamesAPI"></a>
+      <a href="#" class="fa fa-youtube" target="_blank" href="https://www.youtube.com/channel/UCJEGvSZnQ1pkVfHO8s5G8hA"></a>
+    </div>
+</footer>
+</div>
+</body>
+</html>
