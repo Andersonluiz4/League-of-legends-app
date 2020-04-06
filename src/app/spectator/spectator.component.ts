@@ -47,6 +47,7 @@ export class SpectatorComponent implements OnInit {
                     if (idsInfo.includes(parseInt(keys[data].key))) {
                         var freeWeekLoadImage = '/assets/championImages/loading/' + keys[data].name + '_0.jpg'
                         console.log(championInfo)
+                        
                         if(championInfo.teamId == 100) {
                           document.getElementById('list1').innerHTML += '<div><img id="champImg" src="' + "../.." + freeWeekLoadImage + '" + height=300px;' +'> <div id="summonerId">' + championInfo.name + '</div></div>'
                           $("#list1").css("color", "darksalmon")
@@ -58,9 +59,10 @@ export class SpectatorComponent implements OnInit {
                           $("#list2").css("textAlign", "center")
                           
                         }
-                      $("#summonerId").css("borderStyle", "groove")
-                      $("#champImg").css("borderStyle", "groove")
+                      
                     }
+                 
+                  $("#wrapper").css("background-image", "linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(" + "https://pbs.twimg.com/media/CBH_Bm2UwAAqQaR.png" + ")");
                 }
             }
             // styleLoader.loader("#loader", "#summonerInfo", 200, 1000),

@@ -132,7 +132,6 @@
     margin: 0 auto;
     margin-top: 1px;
     z-index: 150;
-    background-color: #151f34;
 }
 
 #list1, #list2 {
@@ -184,7 +183,7 @@ footer img {
 }
 
 #champions2 {
-  margin-top: 6em;
+  margin-top: 4em;
 }
 
 #champions1 img,  #champions2 img{
