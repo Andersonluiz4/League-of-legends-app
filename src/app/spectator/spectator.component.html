@@ -22,7 +22,7 @@
       <div id="cabecalhoPrincipal-list">
         <nav class="cabecalhoPrincipal-nav">
           <a routerLink="" class="cabecalhoPrincipal-nav-link" href="#">Home</a>
-           <a onClick="window.location.reload();" routerLink="/allChampions" class="cabecalhoPrincipal-nav-link" href="#">All <div>Champions</div></a>
+           <a onClick="window.location.reload();" routerLink="/allchampions" class="cabecalhoPrincipal-nav-link" href="#">All <div>Champions</div></a>
         </nav>
       </div>
   </header>
@@ -32,6 +32,9 @@
             <input id="summonerName" [(ngModel)]="summonerName" placeholder="Summoner name..."/>
             <button (click)="getSpectateInfo($event)">Search</button>
           </div>
+    </div>
+    <div id="removeBut">
+      <img class="revertChanges" style="display: none;" id='Revert' title="Revert filters" src="assets/routesImages/revert.png" (click)="removeFilters()">
     </div>
     <div id="champions1">
         <ol id="list1">

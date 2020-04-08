@@ -144,13 +144,27 @@
 }
 
 #summonerName {
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 footer {
     background-color: #19202d;
     border: 1px solid #1A293A;
     box-shadow: 0 0 1px 1px #060B14, inset 0 0 0 1px #0d1420;
+}
+
+#Revert {
+  height: 30px;
+  margin: auto;
+}
+
+#form button {
+  margin-left: 1em;
+}
+
+#removeBut {
+  height: 6em;
+  display: flex;
 }
 
 footer img {

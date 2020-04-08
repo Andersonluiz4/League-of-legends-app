@@ -25,12 +25,19 @@ export class SpectatorComponent implements OnInit {
 
   constructor(private http:HttpClient) { }
 
+  public removeFilters() {
+    $(".test" ).remove();
+    $('#searchForm').show();
+    $('#Revert').css("display", "none");
+  }
+
   getSpectateInfo(input){
+    $('#searchForm').hide();
+    $('#Revert').css("display", "block");
     const apiUrl = 'https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + this.summonerName + '?api_key=' + config.apikey
     const promise = this.http.get(apiUrl).toPromise();
     promise.then((data)=>{
       this.userInfo = data,
-      
       this.http
         .get<any>('https://br1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/' + this.userInfo.id + '?api_key=' + config.apikey)
         .subscribe(async masteryInfo => {
@@ -45,34 +52,31 @@ export class SpectatorComponent implements OnInit {
                 var idsInfo = [championInfo.champ]
                 for(var data = 0; data < keys.length; data++) {
                     if (idsInfo.includes(parseInt(keys[data].key))) {
-                        var freeWeekLoadImage = '/assets/championImages/loading/' + keys[data].name + '_0.jpg'
-                        console.log(championInfo)
-                        
+                        var freeWeekLoadImage = '/assets/championImages/loading/' + keys[data].id + '_0.jpg'                    
                         if(championInfo.teamId == 100) {
-                          document.getElementById('list1').innerHTML += '<div><img id="champImg" src="' + "../.." + freeWeekLoadImage + '" + height=300px;' +'> <div id="summonerId">' + championInfo.name + '</div></div>'
+                          document.getElementById('list1').innerHTML += '<div class="test"><img id="champImg" src="' + "../.." + freeWeekLoadImage + '" + height=300px;' +'> <div id="summonerId">' + championInfo.name + '</div></div>'
                           $("#list1").css("color", "darksalmon")
                           $("#list1").css("textAlign", "center")
                         }
                         else {
-                          document.getElementById('list2').innerHTML += '<div><img id="champImg" src="' + "../.." + freeWeekLoadImage + '" + height=300px;' + '> <div id="summonerId">' + championInfo.name + '</div></div>'
+                          document.getElementById('list2').innerHTML += '<div class="test"><img id="champImg" src="' + "../.." + freeWeekLoadImage + '" + height=300px;' + '> <div id="summonerId">' + championInfo.name + '</div></div>'
                           $("#list2").css("color", "darksalmon")
                           $("#list2").css("textAlign", "center")
-                          
-                        }
-                      
-                    }
-                 
+                        }                        
                   $("#wrapper").css("background-image", "linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(" + "https://pbs.twimg.com/media/CBH_Bm2UwAAqQaR.png" + ")");
                 }
             }
-            // styleLoader.loader("#loader", "#summonerInfo", 200, 1000),
+          }
+            styleLoader.loader("#loader", "#wrapper", 200, 1000)
           })
       })
+      
     }).catch(()=>{
       styleLoader.loader("#loader2", "#error-message", 500, 1000)
       styleLoader.errorMessage("Invalid summoner name")
       
     });
+    this.test = 'naruto';
   }
 
   ngOnInit() {
