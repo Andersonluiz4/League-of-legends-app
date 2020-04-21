@@ -23,4 +23,3 @@ export async function getSpectateImages(playersIds) {
         return finalList
     })
 }
-NpfdcK4uWAU1CHgukCCHJ3Ts_BeFgktdtWK0BbkWA_CMGOs
