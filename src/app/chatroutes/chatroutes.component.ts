@@ -35,6 +35,7 @@ export class ChatroutesComponent implements OnInit {
     console.log(this.data)
   }
 
+
   ngOnInit(): void {
   }
 

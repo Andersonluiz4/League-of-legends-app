@@ -63,7 +63,7 @@ except:
 
     with open("data.pickle", "wb") as f:
         pickle.dump((words, labels, training, output), f)
-        
+
 tensorflow.reset_default_graph()
 
 net = tflearn.input_data(shape=[None, len(training[0])])
@@ -80,13 +80,13 @@ except:
     model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
     model.save("model.tflearn")
 
-    
+
 def bag_of_words(s, words):
     bag = [0 for _ in range(len(words))]
-    
+
     s_words = nltk.word_tokenize(s)
     s_words = [stemmer.stem(word.lower()) for word in s_words]
-    
+
     for se in s_words:
         for i, w in enumerate(words):
             if w == se:
@@ -95,7 +95,7 @@ def bag_of_words(s, words):
 
 def getWords():
     inp = input("You: ")
- 
+
 
 def chat(inp):
     print("Start talking with the bot!")
@@ -106,18 +106,18 @@ def chat(inp):
         print("banana")
         results_index = numpy.argmax(results)
         tag = labels[results_index]
-        
+
         if results[results_index] > 0.7:
             for tg in data["intents"]:
                 if tg['tag'] == tag:
                     responses = tg['responses']
             value = random.choice(responses)
-                    
+
             print(value)
         else:
             value = "I didn't get that, try again"
             print(value)
         return value
 # chat()
-        
+
 
