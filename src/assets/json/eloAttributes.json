@@ -1,5 +1,5 @@
 {
-    "apikey": "RGAPI-ac89d285-59b6-4461-9721-b092d091fce7",
+    "apikey": "RGAPI-f83b5d35-03ae-4663-a2e0-2e57b5e98ee1",
     "soloqueue": "RANKED_SOLO_5x5",
     "flexqueue": "RANKED_FLEX_SR",
     "woodtier": "WOOD",
@@ -11,4 +11,4 @@
     "masterTier": "MASTER",
     "grandmasterTier": "GRANDMASTER",
     "challengerTier": "CHALLENGER"
-  }
+}

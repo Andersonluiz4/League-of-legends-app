@@ -51,7 +51,7 @@ export class SpectatorComponent implements OnInit {
       console.log(error.statusText)
 
     });
-    
+
   }
 
   async getSummonerStats(userInfo) {
@@ -80,7 +80,7 @@ export class SpectatorComponent implements OnInit {
                       }
                       else {
                         this.champion200.push(championInfo)
-                      }   
+                      }
                 $("#wrapper").css("background-image", "linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)), url(" + "https://1.bp.blogspot.com/-TM4KItRZyWA/WIpf-w6ccnI/AAAAAAABBak/zMT7AOcnOSs4tOO1CJ6XospxUc1vZXnLACLcB/s1600/SRBloodMoonBackground.png" + ")");
               }
           }
@@ -94,10 +94,10 @@ export class SpectatorComponent implements OnInit {
       document.getElementById("error").textContent = "Not in a ongoing match"
       console.log(error.statusText)
 
-    });  
+    });
   }
-  
-  
+
+
 
   ngOnInit() {
   }

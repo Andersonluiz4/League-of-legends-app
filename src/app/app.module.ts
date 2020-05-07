@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AllchampionsComponent } from './allchampions/allchampions.component';
 import { SpectatorComponent } from './spectator/spectator.component';
+import { ChatroutesComponent } from './chatroutes/chatroutes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FreeWeekComponent,
     AllchampionsComponent,
-    SpectatorComponent
+    SpectatorComponent,
+    ChatroutesComponent
   ],
   imports: [
     BrowserModule,
