@@ -26,7 +26,7 @@
         {
             "tag": "campeao",
             "patterns": ["Qual o melhor campeao", "Qual o campeão mais forte", "Qual campeao da mais dano"],
-            "responses": ["Eu diria que pelas estatisticas, certamente nao e o ezreal, campeao sem dano vai toma no cu"],
+            "responses": ["Eu diria que pelas estatisticas, certamente nao e o ezreal, campeao sem dano do inferno"],
             "context_set": ""
         },
         {
