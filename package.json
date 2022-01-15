@@ -34,7 +34,7 @@
     "op.gg-api": "^2.0.5-alpha",
     "require": "^2.4.20",
     "rxjs": "~6.4.0",
-    "shelljs": "^0.8.3",
+    "shelljs": "^0.8.5",
     "tslib": "^1.10.0",
     "unirest": "^0.6.0",
     "webpack": "^4.41.5",
